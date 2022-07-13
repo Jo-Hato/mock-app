@@ -7,7 +7,7 @@ app.component('scwt', {
 
   <form class="review-form" @submit.prevent="onSubmit">
 
-    <div>Picked: {{ picked }}</div>
+    <div>!!!Debug Picked: {{ picked }}</div>
     <div>
       <input style="margin-left:1em;" class="red" type="radio" id="one" value="red" v-model="picked" />
       <input class="green" type="radio" id="two" value="green" v-model="picked" />
@@ -50,6 +50,6 @@ app.component('scwt', {
   },
   beforeMount(){
     this.rngWord()
-    this.score = 0
+    this.score = null
   }
 })
