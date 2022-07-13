@@ -2,8 +2,8 @@ app.component('ground-survey', {
   template:
   /*html*/
   `<h1>Emotion Survey</h1>
-  <p>How do you feel?<br>
-  1: low, 3: mid, 5: high</p>
+  <p>How do you feel?</p>
+  <p>1: low, 5: high</p>
 
   <form class="review-form" @submit.prevent="onSubmit">
 

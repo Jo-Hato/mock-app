@@ -7,16 +7,23 @@ app.component('scwt', {
 
   <form class="review-form" @submit.prevent="onSubmit">
 
-    <input id="input" v-model="input"><br>
-
-    <input class="button" type="submit" value="Submit">
+    <div>Picked: {{ picked }}</div>
+    <div>
+      <input style="margin-left:1em;" class="red" type="radio" id="one" value="red" v-model="picked" />
+      <input class="green" type="radio" id="two" value="green" v-model="picked" />
+      <input class="blue" type="radio" id="three" value="blue" v-model="picked" />
+      <input class="black" type="radio" id="four" value="black" v-model="picked" />
+      <input class="yellow" type="radio" id="five" value="yellow" v-model="picked" />
+    </div>
 
   </form>`,
   data() {
     return {
       rng_text: "",
       input: null,
-      score: 0
+      score: 0,
+
+      picked: 0
     }
   },
   methods: {

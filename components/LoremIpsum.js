@@ -7,7 +7,7 @@ app.component('lorem-ipsum', {
 
   <form class="review-form" @submit.prevent="onSubmit">
 
-    <label for="input"><b>{{ rng_text }}</b></label>
+    <label style="font-size: 2em;" for="input"><b>{{ rng_text }}</b></label>
     <input id="input" v-model="input"><br>
 
     <input class="button" type="submit" value="Submit">
