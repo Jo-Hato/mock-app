@@ -21,7 +21,7 @@ h1 {
 }
 
 h2 {
-  font-size: 4.5rem;
+  font-size: 5rem;
   margin: 1rem 2rem 0 2rem;
   text-align: center;
 }
@@ -77,7 +77,7 @@ select {
 input[type=radio] {
   border: 1px solid #fff;
   margin: 0.5em;
-  padding: 2em;
+  padding: 1.5em;
   width: auto;
   size: 5em;
   -webkit-appearance: none;
