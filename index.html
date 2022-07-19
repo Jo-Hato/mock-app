@@ -15,7 +15,6 @@
       <p>Debugger: eventNum = {{ eventNum }}</p>
 
       <initial-setup v-if="eventNum === 0" :accels="accels" :gyros="gyros"></initial-setup>
-
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
 
       <!--
@@ -129,15 +128,15 @@
           window.removeEventListener("devicemotion", handleMotion);
           window.removeEventListener("deviceorientation", handleOrientation);
           demo_button.innerHTML = "Start demo";
-          demo_button.classList.add('btn-success');
-          demo_button.classList.remove('btn-danger');
+          //demo_button.classList.add('btn-success');
+          //demo_button.classList.remove('btn-danger');
           is_running = false;
         }else{
           window.addEventListener("devicemotion", handleMotion);
           window.addEventListener("deviceorientation", handleOrientation);
           document.getElementById("start_demo").innerHTML = "Stop demo";
-          demo_button.classList.remove('btn-success');
-          demo_button.classList.add('btn-danger');
+          //demo_button.classList.remove('btn-success');
+          //demo_button.classList.add('btn-danger');
           is_running = true;
         }
       };
