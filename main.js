@@ -12,6 +12,16 @@ const app = Vue.createApp({
         addInitialForm(initialForm) {
             this.experimentData.push(initialForm)
             this.eventNum++
+        },
+        handleMotionEvent(event) {
+
+            const x = event.accelerationIncludingGravity.x;
+            const y = event.accelerationIncludingGravity.y;
+            const z = event.accelerationIncludingGravity.z;
+        
+            this.accels[0] = x
+            this.accels[1] = y
+            this.accels[2] = z
         }
     },
     beforeMount(){
@@ -78,17 +88,6 @@ const app = Vue.createApp({
             this.gyros[1] = leftToRight
             this.gyros[2] = rotateDegrees
         };
-        
-        function handleMotionEvent(event) {
-
-            const x = event.accelerationIncludingGravity.x;
-            const y = event.accelerationIncludingGravity.y;
-            const z = event.accelerationIncludingGravity.z;
-        
-            this.accels[0] = x
-            this.accels[1] = y
-            this.accels[2] = z
-        }
         
         window.addEventListener("devicemotion", handleMotionEvent, true);        
     }
