@@ -69,15 +69,15 @@ const app = Vue.createApp({
                 const leftToRight = event.gamma;
                 // beta: front back motion
                 const frontToBack = event.beta;
-        
+                this.gyros[0] = frontToBack
+                this.gyros[1] = leftToRight
+                this.gyros[2] = rotateDegrees
                 handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
             }, true);
         }
         
         var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
-            this.gyros[0] = frontToBack
-            this.gyros[1] = leftToRight
-            this.gyros[2] = rotateDegrees
+
         };
         
     }
