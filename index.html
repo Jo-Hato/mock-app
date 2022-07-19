@@ -14,9 +14,9 @@
 
       <p>Debugger: eventNum = {{ eventNum }}</p>
 
-      <initial-setup v-if="eventNum === 0" :accels="accels" :gyros="gyros"></initial-setup>
+      <initial-setup v-if="eventNum != 100" :accels="accels" :gyros="gyros"></initial-setup>
 
-      <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
+      <initial-form v-if="eventNum != 100" @initial-form-submitted="addInitialForm"></initial-form><br>
 
       
 
