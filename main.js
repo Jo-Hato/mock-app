@@ -3,7 +3,7 @@ const app = Vue.createApp({
         return {
             eventNum: 0,
             experimentData: [],
-            gyro: 0
+            gyros: [0, 0, 0],
         }
     },
     methods: {
@@ -47,7 +47,9 @@ const app = Vue.createApp({
 
             let gyroscope = new Gyroscope({frequency: 60});
             gyroscope.addEventListener('reading', e => {
-            this.gyro = gyroscope.x
+            this.gyros[0] = gyroscope.x
+            this.gyros[1] = gyroscope.y
+            this.gyros[2] = gyroscope.z
             console.log("Angular velocity along the X-axis " + gyroscope.x);
             console.log("Angular velocity along the Y-axis " + gyroscope.y);
             console.log("Angular velocity along the Z-axis " + gyroscope.z);

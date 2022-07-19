@@ -11,8 +11,10 @@
   <body>
     <div id="app">
       <header>MockApp Ver. Alpha</header>
+
       <p>Debugger: eventNum = {{ eventNum }}</p>
-      <p>Gyro: {{ gyro }}</p>
+      <p>Gyros: {{ gyros }}</p>
+
       <initial-setup v-if="eventNum === 0"></initial-setup>
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
 
