@@ -3,6 +3,8 @@ const app = Vue.createApp({
         return {
             eventNum: 0,
             experimentData: [],
+            SENSORFREQ: 20,
+            accels: [0, 0, 0],
             gyros: [0, 0, 0],
         }
     },
@@ -20,39 +22,26 @@ const app = Vue.createApp({
                 return;
             }
 
-            let accelerometer = null;
-            try {
-                accelerometer = new Accelerometer({ referenceFrame: 'device' });
-                accelerometer.addEventListener('error', event => {
-                    // Handle runtime errors.
-                    if (event.error.name === 'NotAllowedError') {
-                        // Branch to code for requesting permission.
-                    } else if (event.error.name === 'NotReadableError' ) {
-                        console.log('Cannot connect to the sensor.');
-                    }
-                });
-                accelerometer.addEventListener('reading', () => reloadOnShake(accelerometer));
-                accelerometer.start();
-            } catch (error) {
-                // Handle construction errors.
-                if (error.name === 'SecurityError') {
-                    // See the note above about feature policy.
-                    console.log('Sensor construction was blocked by a feature policy.');
-                } else if (error.name === 'ReferenceError') {
-                    console.log('Sensor is not supported by the User Agent.');
-                } else {
-                    throw error;
-                }
-            }
+            let acl = new Accelerometer({frequency: this.SENSORFREQ});
+            acl.addEventListener('reading', () => {
+            this.accels[0] = acl.x
+            this.accels[1] = acl.y
+            this.accels[2] = acl.z
+            //console.log("Acceleration along the X-axis " + acl.x);
+            //console.log("Acceleration along the Y-axis " + acl.y);
+            //console.log("Acceleration along the Z-axis " + acl.z);
+            });
+            acl.start();
 
-            let gyroscope = new Gyroscope({frequency: 60});
+
+            let gyroscope = new Gyroscope({frequency: this.SENSORFREQ});
             gyroscope.addEventListener('reading', e => {
             this.gyros[0] = gyroscope.x
             this.gyros[1] = gyroscope.y
             this.gyros[2] = gyroscope.z
-            console.log("Angular velocity along the X-axis " + gyroscope.x);
-            console.log("Angular velocity along the Y-axis " + gyroscope.y);
-            console.log("Angular velocity along the Z-axis " + gyroscope.z);
+            //console.log("Angular velocity along the X-axis " + gyroscope.x);
+            //console.log("Angular velocity along the Y-axis " + gyroscope.y);
+            //console.log("Angular velocity along the Z-axis " + gyroscope.z);
             });
             gyroscope.start();
         });
