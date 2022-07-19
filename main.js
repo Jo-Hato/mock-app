@@ -12,7 +12,37 @@ const app = Vue.createApp({
         addInitialForm(initialForm) {
             this.experimentData.push(initialForm)
             this.eventNum++
-        }
+        },
+
+        handleOrientationEvent (frontToBack, leftToRight, rotateDegrees) {
+            this.accels[0] = frontToBack
+            this.accels[1] = leftToRight
+            this.accels[2] = rotateDegrees
+        },
+
+        myClick() {
+            // feature detect
+            if (typeof DeviceMotionEvent.requestPermission === 'function') {
+              DeviceMotionEvent.requestPermission()
+                .then(permissionState => {
+                  if (permissionState === 'granted') {
+                    window.addEventListener("deviceorientation", function(event) {
+                        // alpha: rotation around z-axis
+                        const rotateDegrees = event.alpha;
+                        // gamma: left to right
+                        const leftToRight = event.gamma;
+                        // beta: front back motion
+                        const frontToBack = event.beta;
+                
+                        handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
+                    }, true);
+                  }
+                })
+                .catch(console.error);
+            } else {
+              // handle regular non iOS 13+ devices
+            }
+          }
     },
     beforeMount(){
 
@@ -60,15 +90,5 @@ const app = Vue.createApp({
             });
         });
         */
-
-        DeviceOrientationEvent.requestPermission()
-        .then(response => {
-        if (response == 'granted') {
-            window.addEventListener('deviceorientation', (e) => {
-                this.accels[0] = e
-            })
-        }
-        })
-        .catch(console.error)     
     }
 })
