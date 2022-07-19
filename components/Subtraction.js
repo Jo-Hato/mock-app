@@ -7,7 +7,7 @@ app.component('subtraction', {
 
   <form class="review-form" @submit.prevent="onSubmit">
     <h2>{{ num0 }} - {{ num1 }} = ?</h2>
-    <label for="input"><b>Input your answer here:</label>
+    <label for="input">Input your answer here:</label>
     <input id="input" v-model="input" type="number" pattern="\d"><br>
 
     <input class="button" type="submit" value="Submit">

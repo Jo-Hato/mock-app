@@ -67,7 +67,7 @@ app.component('ground-survey', {
         angry: this.angry,
         interested: this.interested,
       }
-      this.$emit('review-submitted', productReview)
+      //this.$emit('review-submitted', productReview)
 
       //!!!Increase event number
     }

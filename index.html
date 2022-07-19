@@ -11,22 +11,24 @@
   <body>
     <div id="app">
       <header>MockApp Ver. Alpha</header>
-      <initial-form @review-submitted="addReview"></initial-form><br>
-      <header>MockApp Ver. Alpha</header>
+      <p>Debugger: eventNum = {{ eventNum }}</p>
+      <p>Gyro: {{ gyro }}</p>
+      <initial-setup v-if="eventNum === 0"></initial-setup>
+      <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
+
+      <!--
       <ground-survey></ground-survey><br>
-      <header>MockApp Ver. Alpha</header>
       <lorem-ipsum></lorem-ipsum><br>
-      <header>MockApp Ver. Alpha</header>
       <subtraction></subtraction><br>
-      <header>MockApp Ver. Alpha</header>
       <scwt></scwt><br>
-      <!--  -->
+      -->
     </div>
 
     <!-- Import App -->
     <script src="./main.js"></script>
 
     <!-- Import Components -->
+    <script src="./components/InitialSetup.js"></script>
     <script src="./components/InitialForm.js"></script>
     <script src="./components/GroundSurvey.js"></script>
     <script src="./components/LoremIpsum.js"></script>

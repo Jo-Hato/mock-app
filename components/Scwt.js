@@ -2,54 +2,60 @@ app.component('scwt', {
   template:
   /*html*/
   `<h1>SCWT Excercise</h1>
-  <p>Please choose the <b>written</b> color.</p>
+  <p>Please choose the <u>{{ writtenOrFont[rng] }} color</u>.</p>
   <p>Current Score: {{ score }}</p>
 
-  <form class="review-form" @submit.prevent="onSubmit">
+  <form class="review-form">
 
-    <div>!!!Debug Picked: {{ picked }}</div>
+    <h2 style="text-shadow: 0 0 3px #FFFFFF, 0 0 5px #000000;" :class="word.class[word.color]">
+      {{ word.written }}
+    </h2>
+
     <div>
-      <input style="margin-left:1em;" class="red" type="radio" id="one" value="red" v-model="picked" />
-      <input class="green" type="radio" id="two" value="green" v-model="picked" />
-      <input class="blue" type="radio" id="three" value="blue" v-model="picked" />
-      <input class="black" type="radio" id="four" value="black" v-model="picked" />
-      <input class="yellow" type="radio" id="five" value="yellow" v-model="picked" />
+      <input v-model="picked" @click="onSubmit(color)" v-for="(color, index) in colors" :class="color" type="radio" :id="index" :value="color"/>
     </div>
 
   </form>`,
   data() {
     return {
-      rng_text: "",
-      input: null,
+      colors: ["red", "green", "blue", "black", "yellow"],
+      word: {"written": "", "color": null, class: ["rred", "ggreen", "bblue", "bblack", "yyellow"]},
       score: 0,
-
-      picked: 0
+      picked: null,
+      writtenOrFont: ["written", "font"],
+      rng: null
     }
   },
   methods: {
     rngWord(){
+        this.word.written = this.colors[Math.floor(Math.random() * 5)]
+        this.word.color = Math.floor(Math.random() * 5)
+        this.rng = Math.floor(Math.random() * 2)
     },
-    onSubmit() {
-      if (null) {
-        alert('You have typo(s) in your submission.\nPlease revise you text and resubmit.')
-        return
+    onSubmit(color) {
+      if (this.rng == 1) {
+        if (color == this.colors[this.word.color]) {
+          this.score++
+        } else {
+          this.score--
+        }
+      } else {
+        if (color != this.colors[this.word.color]) {
+          this.score++
+        } else {
+          this.score--
+        }
       }
 
-      /*let productReview = {
-        lorem: this.input,
-      }
-      this.$emit('review-submitted', productReview)*/
-
-      this.input = ""
-      this.score++
       if (this.score == 5) {
         alert("GO NEXT EVENT")
       }
-      //addScore, more than 25
+      this.rngWord()
     }
   },
   beforeMount(){
     this.rngWord()
-    this.score = null
+    this.score = 0
+    this.picked = null
   }
 })

@@ -9,7 +9,7 @@ app.component('initial-form', {
       <input id="id" v-model="id"><br>
 
       <label for="age">Age:</label><br>
-      <input age="age" type="number" step="1" pattern="\d" v-model="age"><br>
+      <input age="age" type="number" step="1" pattern="\d" v-model.number="age"><br>
 
       <label for="gender">Gender:</label><br>
       <select id="gender" v-model="gender">
@@ -24,7 +24,8 @@ app.component('initial-form', {
       return {
         id: '',
         age: null,
-        gender: null
+        gender: null,
+        initialForm: {},
       }
     },
     methods: {
@@ -33,16 +34,12 @@ app.component('initial-form', {
           alert('Info is incomplete. Please fill out every field.')
           return
         }
-  
-        let productReview = {
+        let initialForm = {
           id: this.id,
           age: this.age,
           gender: this.gender
-  
         }
-        this.$emit('review-submitted', productReview)
-  
-        //increase event number
-      }
+        this.$emit('initial-form-submitted', initialForm)
+      },
     }
   })

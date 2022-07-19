@@ -51,7 +51,6 @@ app.component('review-form', {
         review: this.review,
         rating: this.rating,
         recommend: this.recommend // solution
-
       }
       this.$emit('review-submitted', productReview)
 
@@ -59,7 +58,6 @@ app.component('review-form', {
       this.review = ''
       this.rating = null
       this.recommend = null // solution
-
     }
   }
 })
