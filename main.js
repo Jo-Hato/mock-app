@@ -15,6 +15,8 @@ const app = Vue.createApp({
         }
     },
     beforeMount(){
+
+        /*
         navigator.permissions.query({ name: 'accelerometer' })
         .then(result => {
             if (result.state === 'denied') {
@@ -57,5 +59,26 @@ const app = Vue.createApp({
               gyroscope.start();
             });
         });
+        */
+
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener("deviceorientation", function(event) {
+                // alpha: rotation around z-axis
+                const rotateDegrees = event.alpha;
+                // gamma: left to right
+                const leftToRight = event.gamma;
+                // beta: front back motion
+                const frontToBack = event.beta;
+        
+                handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
+            }, true);
+        }
+        
+        var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
+            this.gyros[0] = frontToBack
+            this.gyros[1] = leftToRight
+            this.gyros[2] = rotateDegrees
+        };
+        
     }
 })
