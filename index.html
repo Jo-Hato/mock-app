@@ -13,18 +13,9 @@
       <header>MockApp Ver. Alpha</header>
 
       <p>Debugger: eventNum = {{ eventNum }}</p>
-      <p>Acceleros:<br>
-        {{ accels[0] }}<br>
-        {{ accels[1] }}<br>
-        {{ accels[2] }}<br>
-      </p>
-      <p>Gyros:<br>
-        {{ gyros[0] }}<br>
-        {{ gyros[1] }}<br>
-        {{ gyros[2] }}<br>
-      </p>
 
-      <initial-setup v-if="eventNum === 0"></initial-setup>
+      <initial-setup v-if="eventNum === 0" :accels="accels" :gyros="gyros"></initial-setup>
+
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
 
       <!--
