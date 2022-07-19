@@ -12,16 +12,6 @@ const app = Vue.createApp({
         addInitialForm(initialForm) {
             this.experimentData.push(initialForm)
             this.eventNum++
-        },
-        handleMotionEvent(event) {
-
-            const x = event.accelerationIncludingGravity.x;
-            const y = event.accelerationIncludingGravity.y;
-            const z = event.accelerationIncludingGravity.z;
-        
-            this.accels[0] = x
-            this.accels[1] = y
-            this.accels[2] = z
         }
     },
     beforeMount(){
@@ -71,24 +61,14 @@ const app = Vue.createApp({
         });
         */
 
-        if (window.DeviceOrientationEvent) {
-            window.addEventListener("deviceorientation", function(event) {
-                // alpha: rotation around z-axis
-                const rotateDegrees = event.alpha;
-                // gamma: left to right
-                const leftToRight = event.gamma;
-                // beta: front back motion
-                const frontToBack = event.beta;
-                handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
-            }, true);
+        DeviceOrientationEvent.requestPermission()
+        .then(response => {
+        if (response == 'granted') {
+            window.addEventListener('deviceorientation', (e) => {
+                this.accels[0] = e
+            })
         }
-        
-        var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
-            this.gyros[0] = frontToBack
-            this.gyros[1] = leftToRight
-            this.gyros[2] = rotateDegrees
-        };
-        
-        window.addEventListener("devicemotion", handleMotionEvent, true);        
+        })
+        .catch(console.error)     
     }
 })
