@@ -69,16 +69,27 @@ const app = Vue.createApp({
                 const leftToRight = event.gamma;
                 // beta: front back motion
                 const frontToBack = event.beta;
-                this.gyros[0] = frontToBack
-                this.gyros[1] = leftToRight
-                this.gyros[2] = rotateDegrees
                 handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
             }, true);
         }
         
         var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
-
+            this.gyros[0] = frontToBack
+            this.gyros[1] = leftToRight
+            this.gyros[2] = rotateDegrees
         };
         
+        function handleMotionEvent(event) {
+
+            const x = event.accelerationIncludingGravity.x;
+            const y = event.accelerationIncludingGravity.y;
+            const z = event.accelerationIncludingGravity.z;
+        
+            this.accels[0] = x
+            this.accels[1] = y
+            this.accels[2] = z
+        }
+        
+        window.addEventListener("devicemotion", handleMotionEvent, true);        
     }
 })
