@@ -21,10 +21,10 @@ const app = Vue.createApp({
                 console.log('Permission to use accelerometer sensor is denied.');
                 return;
             }
-            navigator.permissions.query({ name: 'accelerometer' })
+            navigator.permissions.query({ name: 'accelerometer and gyrometers' })
             .then(result => {
             if (result.state === 'denied') {
-                console.log('Permission to use accelerometer sensor is denied.');
+                console.log('Permission to use the sensors is denied.');
                 return;
             }
                 let acl = new Accelerometer({frequency: this.SENSORFREQ});
@@ -37,24 +37,17 @@ const app = Vue.createApp({
                 //console.log("Acceleration along the Z-axis " + acl.z);
                 });
                 acl.start();
-            });
-            
-            navigator.permissions.query({ name: 'gyrometer' })
-            .then(result => {
-              if (result.state === 'denied') {
-                console.log('Permission to use gyrometer sensor is denied.');
-                return;
-              }
-              let gyroscope = new Gyroscope({frequency: this.SENSORFREQ});
-              gyroscope.addEventListener('reading', e => {
-              this.gyros[0] = gyroscope.x
-              this.gyros[1] = gyroscope.y
-              this.gyros[2] = gyroscope.z
-              //console.log("Angular velocity along the X-axis " + gyroscope.x);
-              //console.log("Angular velocity along the Y-axis " + gyroscope.y);
-              //console.log("Angular velocity along the Z-axis " + gyroscope.z);
-              });
-              gyroscope.start();
+
+                let gyroscope = new Gyroscope({frequency: this.SENSORFREQ});
+                gyroscope.addEventListener('reading', e => {
+                this.gyros[0] = gyroscope.x
+                this.gyros[1] = gyroscope.y
+                this.gyros[2] = gyroscope.z
+                //console.log("Angular velocity along the X-axis " + gyroscope.x);
+                //console.log("Angular velocity along the Y-axis " + gyroscope.y);
+                //console.log("Angular velocity along the Z-axis " + gyroscope.z);
+                });
+                gyroscope.start();
             });
         });
     }
