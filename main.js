@@ -13,13 +13,13 @@ const app = Vue.createApp({
             this.experimentData.push(initialForm)
             this.eventNum++
         },
-        updateIfNotNull(targetVal, value, precision=10) {
-            targetVal = value.toFixed(precision);
-        },
         handleOrientation(event) {
             updateFieldIfNotNull('Orientation_a', event.alpha);
             updateFieldIfNotNull('Orientation_b', event.beta);
             updateFieldIfNotNull('Orientation_g', event.gamma);
+        },
+        test(val, inc) {
+            val = inc
         },
         handleMotion(event) {
             updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
@@ -29,10 +29,11 @@ const app = Vue.createApp({
             updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
             updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
 
-            updateIfNotNull(this.accels[0], event.acceleration.x);
+            //updateIfNotNull(this.accels[0], event.acceleration.x);
             //updateIfNotNull(this.accels[1], event.acceleration.y);
             //updateIfNotNull(this.accels[2], event.acceleration.z);
             //this.accels[0] = event.acceleration.x;
+            this.test(this.accels[0], 9999)
     
             updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
     
