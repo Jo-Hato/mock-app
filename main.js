@@ -10,9 +10,6 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        incrementEventNum() {
-            this.eventNum++
-        },
         addInitialForm(initialForm) {
             this.experimentData.push(initialForm)
             this.eventNum++
