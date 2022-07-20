@@ -3,7 +3,7 @@ const app = Vue.createApp({
         return {
             eventNum: 0,
             experimentData: [],
-            SENSORFREQ: 20,
+            FREQ: 20,
             PERCISION: 10,
             accels: [0, 0, 0],
             gyros: [0, 0, 0],
@@ -14,11 +14,11 @@ const app = Vue.createApp({
             this.experimentData.push(initialForm)
             this.eventNum++
         },
-        handleOrientation(event) {
+        /*handleOrientation(event) {
             updateFieldIfNotNull('Orientation_a', event.alpha);
             updateFieldIfNotNull('Orientation_b', event.beta);
             updateFieldIfNotNull('Orientation_g', event.gamma);
-        },
+        },*/
         handleMotion(event) {
             /*updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
             updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);

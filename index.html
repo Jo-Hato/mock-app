@@ -12,9 +12,6 @@
     <div id="app">
       <header>MockApp Ver. Alpha</header>
 
-      <p>Debugger: eventNum = {{ eventNum }}</p>
-
-      <initial-setup v-if="eventNum > -1" :accels="accels" :gyros="gyros"></initial-setup>
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
 
       <!--
@@ -23,6 +20,12 @@
         <subtraction></subtraction><br>
         <scwt></scwt><br>
       -->
+
+      <div v-if="true">
+        <p>Debugger: eventNum = {{ eventNum }}</p>
+        <initial-setup v-if="eventNum > -1" :accels="accels" :gyros="gyros"></initial-setup>
+      </div>
+
       <div v-show="eventNum === 0">
         <button id="start_demo" href="#" role="button">Start the demo</button>
         <button @click="eventNum++">NEXT</button>
@@ -94,7 +97,7 @@
         }
         
         window.addEventListener("devicemotion", mountedApp.handleMotion);
-        window.addEventListener("deviceorientation", mountedApp.handleOrientation);
+        //window.addEventListener("deviceorientation", mountedApp.handleOrientation);
       };
     </script>
   </body>
