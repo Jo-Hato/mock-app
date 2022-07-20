@@ -19,7 +19,7 @@ const app = Vue.createApp({
             updateFieldIfNotNull('Orientation_g', event.gamma);
         },
         test(val, inc) {
-            val = inc
+            val = inc;
         },
         handleMotion(event) {
             updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
@@ -33,7 +33,7 @@ const app = Vue.createApp({
             //updateIfNotNull(this.accels[1], event.acceleration.y);
             //updateIfNotNull(this.accels[2], event.acceleration.z);
             //this.accels[0] = event.acceleration.x;
-            this.test(this.accels[0], 9999)
+            test(this.accels[0], 9999);
     
             updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
     
