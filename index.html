@@ -23,7 +23,7 @@
         <subtraction></subtraction><br>
         <scwt></scwt><br>
       -->
-      <div id="demo-div">
+      <div>
         <button id="start_demo" href="#" role="button">Start the demo</button>
         
         <h4>Orientation</h4>
@@ -74,11 +74,11 @@
     <script>
       const mountedApp = app.mount('#app')
 
-      function handleOrientation(event) {
+      /*function handleOrientation(event) {
         updateFieldIfNotNull('Orientation_a', event.alpha);
         updateFieldIfNotNull('Orientation_b', event.beta);
         updateFieldIfNotNull('Orientation_g', event.gamma);
-      }
+      }*/
 
       function updateFieldIfNotNull(fieldName, value, precision=10){
         if (value != null)
@@ -116,7 +116,7 @@
         }
         
         window.addEventListener("devicemotion", handleMotion);
-        window.addEventListener("deviceorientation", handleOrientation);
+        window.addEventListener("deviceorientation", mountedApp.handleOrientation);
       };
     </script>
   </body>
