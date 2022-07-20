@@ -25,13 +25,13 @@ const app = Vue.createApp({
             updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
             updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
             updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
-            updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
+            updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);*/
 
             updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
             updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
             updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
             
-            updateFieldIfNotNull('Accelerometer_i', event.interval, 2);*/
+            //updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
             
             if (event.acceleration.x != null)
                 this.accels[0] = event.acceleration.x
