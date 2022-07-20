@@ -1,11 +1,11 @@
 app.component('initial-setup', {
     props: {
         accels: {
-          type: Array,
+          type: Object,
           required: true
         },
         gyros: {
-            type: Array,
+            type: Object,
             required: true
           },
       },
