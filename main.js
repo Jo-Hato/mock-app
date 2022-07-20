@@ -41,11 +41,11 @@ const app = Vue.createApp({
                 this.accels[2] = event.acceleration.z
 
             if (event.rotationRate.alpha != null)
-                this.accels[0] = event.rotationRate.alpha
+                this.gyros[0] = event.rotationRate.alpha
             if (event.rotationRate.beta != null)
-                this.accels[1] = event.rotationRate.beta
+                this.gyros[1] = event.rotationRate.beta
             if (event.rotationRate.gamma != null)
-                this.accels[2] = event.rotationRate.gamma
+                this.gyros[2] = event.rotationRate.gamma
           }
     }
 })
