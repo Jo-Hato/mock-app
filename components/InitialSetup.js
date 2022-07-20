@@ -14,14 +14,14 @@ app.component('initial-setup', {
     `<h1>Initial Setup</h1>
 
     <p>Accelerometers:<br>
-        X: {{ accels[0] }}<br>
-        Y: {{ accels[1] }}<br>
-        Z: {{ accels[2] }}<br>
+        X: {{ accels.x }}<br>
+        Y: {{ accels.y }}<br>
+        Z: {{ accels.z }}<br>
     </p>
     <p>Gyrometers:<br>
-        X: {{ gyros[0] }}<br>
-        Y: {{ gyros[1] }}<br>
-        Z: {{ gyros[2] }}<br>
+        X: {{ gyros.x }}<br>
+        Y: {{ gyros.y }}<br>
+        Z: {{ gyros.z }}<br>
     </p>
     `,
     beforeMount(){
