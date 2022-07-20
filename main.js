@@ -5,8 +5,8 @@ const app = Vue.createApp({
             experimentData: [],
             FREQ: 20,
             PERCISION: 10,
-            accels: {"x": 0, "y": 0, "z": 0},
-            gyros: {"x": 0, "y": 0, "z": 0},
+            accels: [0, 0, 0],
+            gyros: [0, 0, 0],
         }
     },
     methods: {
@@ -34,18 +34,18 @@ const app = Vue.createApp({
             updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
             
             if (event.acceleration.x != null)
-                this.accels.x = event.acceleration.x
+                this.accels[0] = event.acceleration.x
             if (event.acceleration.y != null)
-                this.accels.y = event.acceleration.y
+                this.accels[1] = event.acceleration.y
             if (event.acceleration.z != null)
-                this.accels.z = event.acceleration.z
+                this.accels[2] = event.acceleration.z
 
             if (event.rotationRate.alpha != null)
-                this.gyros.x = event.rotationRate.alpha
+                this.gyros[0] = event.rotationRate.alpha
             if (event.rotationRate.beta != null)
-                this.gyros.y = event.rotationRate.beta
+                this.gyros[1] = event.rotationRate.beta
             if (event.rotationRate.gamma != null)
-                this.gyros.z = event.rotationRate.gamma
+                this.gyros[2] = event.rotationRate.gamma
           }
     }
 })
