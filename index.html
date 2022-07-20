@@ -12,7 +12,7 @@
     <div id="app">
       <header>MockApp Ver. Alpha</header>
 
-      <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
+      <initial-form v-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
 
       <!--
         <ground-survey></ground-survey><br>
