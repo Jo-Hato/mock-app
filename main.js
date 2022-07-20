@@ -13,10 +13,30 @@ const app = Vue.createApp({
             this.experimentData.push(initialForm)
             this.eventNum++
         },
+        updateFieldIfNotNull(valIndex, value, precision=10){
+            if (value != null)
+              valIndex = value.toFixed(precision);
+          },
         handleOrientation(event) {
-            updateFieldIfNotNull('Orientation_a', event.alpha);
-            updateFieldIfNotNull('Orientation_b', event.beta);
-            updateFieldIfNotNull('Orientation_g', event.gamma);
+            //updateFieldIfNotNull('Orientation_a', event.alpha);
+            //updateFieldIfNotNull('Orientation_b', event.beta);
+            //updateFieldIfNotNull('Orientation_g', event.gamma);
+        },
+        handleMotion(event) {
+            /*updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+            updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+            updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+    
+            updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
+            updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
+            updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
+    
+            updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
+    
+            updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
+            updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
+            updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);*/
+            this.updateFieldIfNotNull(this.accels[0], event.acceleration.x)
           }
     }
 })
