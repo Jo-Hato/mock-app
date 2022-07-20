@@ -14,8 +14,7 @@ const app = Vue.createApp({
             this.eventNum++
         },
         updateIfNotNull(targetVal, value, precision=10) {
-            if (value != null)
-                targetVal = value.toFixed(precision);
+            targetVal = value.toFixed(precision);
         },
         handleOrientation(event) {
             updateFieldIfNotNull('Orientation_a', event.alpha);
@@ -30,10 +29,10 @@ const app = Vue.createApp({
             updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
             updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
 
-            /*updateIfNotNull(this.accels[0], event.acceleration.x);
-            updateIfNotNull(this.accels[1], event.acceleration.y);
-            updateIfNotNull(this.accels[2], event.acceleration.z);*/
-            this.accels[0] = event.acceleration.x;
+            updateIfNotNull(this.accels[0], event.acceleration.x);
+            //updateIfNotNull(this.accels[1], event.acceleration.y);
+            //updateIfNotNull(this.accels[2], event.acceleration.z);
+            //this.accels[0] = event.acceleration.x;
     
             updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
     
