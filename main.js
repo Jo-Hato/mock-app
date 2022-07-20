@@ -36,7 +36,7 @@ const app = Vue.createApp({
             updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
             updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
             updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);*/
-            this.updateFieldIfNotNull(this.accels[0], event.acceleration.x)
+            updateFieldIfNotNull(this.accels[0], event.acceleration.x)
           }
     }
 })
