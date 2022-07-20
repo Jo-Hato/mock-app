@@ -27,6 +27,7 @@ const app = Vue.createApp({
             updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
             updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
             updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
+            this.accels[0] = event.acceleration.x;
     
             updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
     
