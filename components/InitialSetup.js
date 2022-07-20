@@ -41,8 +41,6 @@ app.component('initial-setup', {
       <li>Y-axis: <span id="Gyroscope_y">0</span><span>&deg;/s</span></li>
       <li>Z-axis: <span id="Gyroscope_z">0</span><span>&deg;/s</span></li>
     </ul>
-    
-    </div>
     `,
     beforeMount(){
       }
