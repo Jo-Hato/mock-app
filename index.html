@@ -78,14 +78,14 @@
         updateFieldIfNotNull('Orientation_a', event.alpha);
         updateFieldIfNotNull('Orientation_b', event.beta);
         updateFieldIfNotNull('Orientation_g', event.gamma);
-      }
+      }*/
 
       function updateFieldIfNotNull(fieldName, value, precision=10){
         if (value != null)
           document.getElementById(fieldName).innerHTML = value.toFixed(precision);
       }
 
-      function handleMotion(event) {
+      /*function handleMotion(event) {
         updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
         updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
         updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);

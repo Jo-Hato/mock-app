@@ -13,10 +13,7 @@ const app = Vue.createApp({
             this.experimentData.push(initialForm)
             this.eventNum++
         },
-        updateFieldIfNotNull(fieldName, value, precision=10){
-            if (value != null)
-              document.getElementById(fieldName).innerHTML = value.toFixed(precision);
-          },
+        
         handleOrientation(event) {
             updateFieldIfNotNull('Orientation_a', event.alpha);
             updateFieldIfNotNull('Orientation_b', event.beta);
