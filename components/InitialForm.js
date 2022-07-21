@@ -6,8 +6,8 @@ app.component('initial-form', {
     <p>Please enter you basic information.</p>
 
     <form class="review-form" @submit.prevent="onSubmit">
-      <label for="id">Name (or Nickname):</label><br>
-      <input id="id" v-model="id"><br>
+      <label for="name">Name (or Nickname):</label><br>
+      <input id="name" v-model="name"><br>
 
       <label for="age">Age:</label><br>
       <input age="age" type="number" step="1" pattern="\d" v-model.number="age"><br>
@@ -24,7 +24,8 @@ app.component('initial-form', {
     <div>`,
     data() {
       return {
-        id: '',
+        id: null,
+        name: '',
         age: null,
         gender: null,
         initialForm: {},
@@ -32,12 +33,13 @@ app.component('initial-form', {
     },
     methods: {
       onSubmit() {
-        if (this.id === '' || this.age === null || this.gender === null) {
+        if (this.name === '' || this.age === null || this.gender === null) {
           alert('Info is incomplete. Please fill out every field.')
           return
         }
         let initialForm = {
-          id: this.id,
+          id: Date.now(),
+          name: this.name,
           age: this.age,
           gender: this.gender
         }

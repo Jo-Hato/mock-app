@@ -5,11 +5,11 @@ const app = Vue.createApp({
             FREQ: 20,
 
             runData: {
-                "SubjectInfo": null,
+                "SubjectInfo": {"id": null, "name": "", "age": 0, "gender": ""},
                 "GroundTruth1": null,
                 "GroundTruth2": null,
-                "record1": null,
-                "record2": null
+                "record1": {"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0},
+                "record2": {"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0}
             },
             accels: [0, 0, 0],
             gyros: [0, 0, 0],
