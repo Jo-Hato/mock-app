@@ -31,21 +31,26 @@ const app = Vue.createApp({
             updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
             updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
             
-            updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
-            
-            if (event.acceleration.x != null)
-                this.accels[0] = event.acceleration.x
-            if (event.acceleration.y != null)
-                this.accels[1] = event.acceleration.y
-            if (event.acceleration.z != null)
-                this.accels[2] = event.acceleration.z
+            //updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
-            if (event.rotationRate.alpha != null)
-                this.gyros[0] = event.rotationRate.alpha
-            if (event.rotationRate.beta != null)
-                this.gyros[1] = event.rotationRate.beta
-            if (event.rotationRate.gamma != null)
-                this.gyros[2] = event.rotationRate.gamma
+            let lastMove = 0;
+            if(Date.now() - lastMove > 40) {
+                updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
+                if (event.acceleration.x != null)
+                    this.accels[0] = event.acceleration.x
+                if (event.acceleration.y != null)
+                    this.accels[1] = event.acceleration.y
+                if (event.acceleration.z != null)
+                    this.accels[2] = event.acceleration.z
+
+                if (event.rotationRate.alpha != null)
+                    this.gyros[0] = event.rotationRate.alpha
+                if (event.rotationRate.beta != null)
+                    this.gyros[1] = event.rotationRate.beta
+                if (event.rotationRate.gamma != null)
+                    this.gyros[2] = event.rotationRate.gamma
+                lastMove = Date.now();
+            }
           }
     }
 })

@@ -25,5 +25,5 @@ app.component('initial-setup', {
     </p>
     `,
     beforeMount(){
-      }
+    }
 })

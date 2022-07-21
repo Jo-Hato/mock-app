@@ -1,7 +1,8 @@
 app.component('initial-form', {
     template:
     /*html*/
-    `<h1>Basic Information</h1>
+    `<div>
+    <h1>Basic Information</h1>
     <p>Please enter you basic information.</p>
 
     <form class="review-form" @submit.prevent="onSubmit">
@@ -19,7 +20,8 @@ app.component('initial-form', {
   
       <input class="button" type="submit" value="Submit">  
   
-    </form>`,
+    </form>
+    <div>`,
     data() {
       return {
         id: '',
