@@ -38,9 +38,10 @@ app.component('ground-survey', {
         <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
       </select>
 
-      <button class="button"  @click="submitForm()">Submit</button>
-      <button class="button" v-if="true" @click="skip()">Force Next</button>
+      
     </div>
+    <button class="button" @click="submitForm()">Submit</button>
+    <button class="button" v-if="true" @click="skip()">Force Next</button>
   </div>`,
   props: {
     debugMode: {
