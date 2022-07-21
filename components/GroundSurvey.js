@@ -2,7 +2,7 @@ app.component('ground-survey', {
   template:
   /*html*/
   `<div>
-    <h1>wtf apple Survey</h1>
+    <h1>Emotion Survey</h1>
     <p>How do you feel?</p>
     <p>1: low, 5: high</p>
 
@@ -38,10 +38,9 @@ app.component('ground-survey', {
         <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
       </select>
 
-      
+      <button class="button" @click="submitForm()">Submit</button>
+      <button class="button" v-if="true" @click="skip()">Force Next</button>
     </div>
-    <button class="button" @click="submitForm()">Submit</button>
-    <button class="button" v-if="true" @click="skip()">Force Next</button>
   </div>`,
   props: {
     debugMode: {
