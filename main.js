@@ -36,7 +36,7 @@ const app = Vue.createApp({
             this.eventNum++
         },
         addGroundTruth(truthForm){
-            if (this.event == 2){
+            if (this.runData["GroundTruth1"] == null){
                 this.runData["GroundTruth1"] = truthForm
             } else {
                 this.runData["GroundTruth2"] = truthForm
