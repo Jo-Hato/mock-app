@@ -31,11 +31,10 @@ const app = Vue.createApp({
             updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
             updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
             
-            //updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
+            updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
             let lastMove = 0;
-            if(Date.now() - lastMove > 400000) {
-                updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
+            if(Date.now() - lastMove > 40000) {
                 if (event.acceleration.x != null)
                     this.accels[0] = event.acceleration.x
                 if (event.acceleration.y != null)
