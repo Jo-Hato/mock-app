@@ -11,6 +11,13 @@
   <body>
     <div id="app">
       <header>MockApp Develop Branch</header>
+      <p>Debugger: eventNum = {{ eventNum }}</p>
+
+      <div v-show="eventNum === 0">
+        <button style="font-size: 2rem;" id="start_demo" href="#" role="button">Allow Motion Sensor Use</button>
+        <initial-setup v-if="eventNum > -1" :accels="accels" :gyros="gyros"></initial-setup>
+        <button style="font-size: 2rem;" @click="eventNum++">Next</button>
+      </div>
 
       <initial-form v-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
 
@@ -20,17 +27,6 @@
         <subtraction></subtraction><br>
         <scwt></scwt><br>
       -->
-
-      <div v-if="true">
-        <p>Debugger: eventNum = {{ eventNum }}</p>
-        <initial-setup v-if="eventNum > -1" :accels="accels" :gyros="gyros"></initial-setup>
-      </div>
-
-      <div v-show="eventNum === 0">
-        <button id="start_demo" href="#" role="button">Start the demo</button>
-        <button @click="eventNum++">NEXT</button>
-      </div>
-      
     </div>
     <!-- Import App -->
     <script src="./main.js"></script>
@@ -49,13 +45,9 @@
 
       let demo_button = document.getElementById("start_demo");
       demo_button.onclick = function(e) {
-        e.preventDefault();
-        
+        e.preventDefault();   
         // Request permission for iOS 13+ devices
-        if (
-          DeviceMotionEvent &&
-          typeof DeviceMotionEvent.requestPermission === "function"
-        ) {
+        if (DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === "function") {
           DeviceMotionEvent.requestPermission();
         }
         window.addEventListener("devicemotion", mountedApp.handleMotion);
