@@ -55,7 +55,7 @@ app.component('initial-form', {
         let initialForm = {
           id: Date.now(),
           name: "Sudo san",
-          age: 999,
+          age: 9999,
           gender: "God"
         }
         this.$emit('initial-form-submitted', initialForm)
