@@ -2,7 +2,7 @@ app.component('ground-survey', {
   template:
   /*html*/
   `<div>
-    <h1>Emotion Survey</h1>
+    <h1>wtf apple Survey</h1>
     <p>How do you feel?</p>
     <p>1: low, 5: high</p>
 
