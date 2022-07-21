@@ -99,7 +99,7 @@
         //window.addEventListener("devicemotion", mountedApp.handleMotion);
         window.addEventListener("devicemotion", function(event) {
             let lastMove = 0;
-            if(Date.now() - lastMove > 40000) {
+            if(Date.now() - lastMove > 1000) {
                 updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
                 updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
                 updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
