@@ -16,7 +16,7 @@
       <div v-show="eventNum === 0">
         <initial-setup v-if="eventNum > -1" :accels="accels" :gyros="gyros"></initial-setup>
         <button style="font-size: 2rem; margin: 3rem 0 0 1rem;" id="start_demo" href="#" role="button">Allow Motion Sensor Use</button><br>
-        <button style="font-size: 2rem; margin: 1rem 0 0 1rem;" @click="eventNum++">Next</button>
+        <button style="font-size: 2rem; margin: 1rem 0 0 1rem;" :disabled="(accels[0] == 0)" @click="eventNum++">Next</button>
       </div>
 
       <initial-form v-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>
