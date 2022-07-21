@@ -18,7 +18,7 @@ app.component('initial-form', {
         <option>Female</option>
       </select><br> 
   
-      <input class="button" type="submit" value="Submit">  
+      <button class="button" type="submit" value="Submit">Submit</button>
   
     </form>
     <div>`,
