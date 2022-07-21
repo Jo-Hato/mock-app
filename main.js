@@ -35,7 +35,5 @@ const app = Vue.createApp({
             if (event.rotationRate.gamma != null)
                 this.gyros[2] = event.rotationRate.gamma
         },
-
-
     }
 })

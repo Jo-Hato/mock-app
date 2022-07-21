@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>MockApp-</title>
+    <title>MockApp</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
@@ -14,9 +14,9 @@
       <p>Debugger: eventNum = {{ eventNum }}</p>
 
       <div v-show="eventNum === 0">
-        <button style="font-size: 2rem;" id="start_demo" href="#" role="button">Allow Motion Sensor Use</button>
         <initial-setup v-if="eventNum > -1" :accels="accels" :gyros="gyros"></initial-setup>
-        <button style="font-size: 2rem;" @click="eventNum++">Next</button>
+        <button style="font-size: 2rem; margin: 3rem 0 0 1rem;" id="start_demo" href="#" role="button">Allow Motion Sensor Use</button><br>
+        <button style="font-size: 2rem; margin: 1rem 0 0 1rem;" @click="eventNum++">Next</button>
       </div>
 
       <initial-form v-if="eventNum === 1" @initial-form-submitted="addInitialForm"></initial-form><br>

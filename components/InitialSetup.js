@@ -12,17 +12,19 @@ app.component('initial-setup', {
     template:
     /*html*/
     `<h1>Initial Setup</h1>
-
-    <p>Accelerometers:<br>
-        X: {{ accels[0] }}<br>
-        Y: {{ accels[1] }}<br>
-        Z: {{ accels[2] }}<br>
-    </p>
-    <p>Gyrometers:<br>
-        X: {{ gyros[0] }}<br>
-        Y: {{ gyros[1] }}<br>
-        Z: {{ gyros[2] }}<br>
-    </p>
+    <div style="margin: 2rem;">
+    <ul>Accelerometers:
+      <li>X: {{ accels[0] }}</li>
+      <li>Y: {{ accels[1] }}</li>
+      <li>Z: {{ accels[2] }}</li>
+    </ul>
+        
+    <ul>Gyrometers:
+      <li>X: {{ gyros[0] }}</li>
+      <li>Y: {{ gyros[1] }}</li>
+      <li>Z: {{ gyros[2] }}</li>
+    </ul>
+    </div>
     `,
     beforeMount(){
     }
