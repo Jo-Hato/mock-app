@@ -95,8 +95,6 @@
         ) {
           DeviceMotionEvent.requestPermission();
         }
-        window.addEventListener("deviceorientation", mountedApp.handleOrientation);
-        //window.addEventListener("devicemotion", mountedApp.handleMotion);
         window.addEventListener("devicemotion", mountedApp.handleMotion);
       };
     </script>

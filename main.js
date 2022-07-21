@@ -20,14 +20,7 @@ const app = Vue.createApp({
             this.runData["SubjectInfo"] = initialForm
             this.eventNum++
         },
-        handleOrientation(event) {
-            updateFieldIfNotNull('Orientation_a', event.alpha);
-            updateFieldIfNotNull('Orientation_b', event.beta);
-            updateFieldIfNotNull('Orientation_g', event.gamma);
-        },
         handleMotion(event) {
-
-
             if (event.acceleration.x != null)
                 this.accels[0] = event.acceleration.x
             if (event.acceleration.y != null)
