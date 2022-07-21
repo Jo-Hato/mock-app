@@ -5,8 +5,7 @@ app.component('ground-survey', {
   <p>How do you feel?</p>
   <p>1: low, 5: high</p>
 
-  <form class="review-form" @submit.prevent="onSubmit">
-
+  <div class="box">
     <!-- Dyamn, should've used Vue's loop... -->
     <label for="tired">Tired:</label>
     <select id="tired" v-model.number="tired">
@@ -38,9 +37,16 @@ app.component('ground-survey', {
       <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
     </select>
 
-    <button class="button" type="submit">Submit</button>
+    <button class="button"  @click="submitForm()">Submit</button>
+    <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
 
-  </form>`,
+  </div>`,
+  props: {
+    debugMode: {
+      type: Boolean,
+      required: true
+    }
+  },
   data() {
     return {
       tired: null,
@@ -52,7 +58,7 @@ app.component('ground-survey', {
     }
   },
   methods: {
-    onSubmit() {
+    submitForm() {
       if (this.tired === null || this.happy === null || this.stress === null || this.energy === null || this.angry === null || this.interested === null) {
         alert('Review is incomplete. Please fill out every field.')
         return
@@ -65,6 +71,17 @@ app.component('ground-survey', {
         energy: this.energy,
         angry: this.angry,
         interested: this.interested,
+      }
+      this.$emit('ground-truth-submitted', truthForm)
+    },
+    skip() {
+      let truthForm = {
+        tired: 999,
+        happy: -999,
+        stress: 999,
+        energy: -999,
+        angry: 999,
+        interested: 3,
       }
       this.$emit('ground-truth-submitted', truthForm)
     }

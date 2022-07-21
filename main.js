@@ -43,6 +43,6 @@ const app = Vue.createApp({
                 this.runData["GroundTruth2"] = truthForm
             }
             this.eventNum++
-        }
+        },
     }
 })
