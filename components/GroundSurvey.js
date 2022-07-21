@@ -38,7 +38,6 @@ app.component('ground-survey', {
       <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
     </select>
 
-
     <input class="button" type="submit" value="Submit">  
 
   </form>`,
@@ -59,7 +58,7 @@ app.component('ground-survey', {
         return
       }
 
-      let productReview = {
+      let truthForm = {
         tired: this.tired,
         happy: this.happy,
         stress: this.stress,
@@ -67,9 +66,7 @@ app.component('ground-survey', {
         angry: this.angry,
         interested: this.interested,
       }
-      //this.$emit('review-submitted', productReview)
-
-      //!!!Increase event number
+      this.$emit('ground-truth-submitted', truthForm)
     }
   }
 })

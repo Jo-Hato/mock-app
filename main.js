@@ -5,21 +5,17 @@ const app = Vue.createApp({
             FREQ: 20,
 
             runData: {
-                "SubjectInfo": {"id": null, "name": "", "age": 0, "gender": ""},
+                "SubjectInfo": null, //{"id": null, "name": "", "age": 0, "gender": ""}
                 "GroundTruth1": null,
                 "GroundTruth2": null,
-                "record1": {"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0},
-                "record2": {"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0}
+                "record1": null, //{"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0}
+                "record2": null  //{"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0}
             },
             accels: [0, 0, 0],
             gyros: [0, 0, 0],
         }
     },
     methods: {
-        addInitialForm(initialForm) {
-            this.runData["SubjectInfo"] = initialForm
-            this.eventNum++
-        },
         handleMotion(event) {
             if (event.acceleration.x != null)
                 this.accels[0] = event.acceleration.x
@@ -35,5 +31,17 @@ const app = Vue.createApp({
             if (event.rotationRate.gamma != null)
                 this.gyros[2] = event.rotationRate.gamma
         },
+        addInitialForm(initialForm) {
+            this.runData["SubjectInfo"] = initialForm
+            this.eventNum++
+        },
+        addGroundTruth(truthForm){
+            if (this.event == 2){
+                this.runData["GroundTruth1"] = truthForm
+            } else {
+                this.runData["GroundTruth2"] = truthForm
+            }
+            this.eventNum++
+        }
     }
 })
