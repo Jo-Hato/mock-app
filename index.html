@@ -23,11 +23,11 @@
         <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" v-if="debugMode" @click="eventNum++">Force Next</button>
 
       </div>
-      <initial-form v-if="eventNum === 1" @initial-form-submitted="addInitialForm" :debug-mode="debugMode"></initial-form><br>
-      <ground-survey v-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" :debug-mode="debugMode"></ground-survey><br>
+      <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" :debug-mode="debugMode"></initial-form>
+      <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" :debug-mode="debugMode"></ground-survey>
+      <lorem-ipsum v-else-if="eventNum === 3"></lorem-ipsum><br>
 
       <!--
-        <ground-survey></ground-survey><br>
         <lorem-ipsum></lorem-ipsum><br>
         <subtraction></subtraction><br>
         <scwt></scwt><br>
