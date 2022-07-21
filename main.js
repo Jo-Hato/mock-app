@@ -34,7 +34,7 @@ const app = Vue.createApp({
             //updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
             let lastMove = 0;
-            if(Date.now() - lastMove > 4000) {
+            if(Date.now() - lastMove > 400000) {
                 updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
                 if (event.acceleration.x != null)
                     this.accels[0] = event.acceleration.x
