@@ -5,7 +5,7 @@ app.component('initial-setup', {
           required: true
         },
         gyros: {
-          type: Array,
+          type: Object,
           required: true
         },
       },
@@ -15,14 +15,14 @@ app.component('initial-setup', {
     <div style="margin: 2rem;">
     <ul>Accelerometers:
       <li>X: {{ accels.x }}</li>
-      <li>Y: {{ accels["y"] }}</li>
+      <li>Y: {{ accels.y }}</li>
       <li>Z: {{ accels.z }}</li>
     </ul>
         
     <ul>Gyrometers:
-      <li>X: {{ gyros[0] }}</li>
-      <li>Y: {{ gyros[1] }}</li>
-      <li>Z: {{ gyros[2] }}</li>
+      <li>X: {{ gyros.x }}</li>
+      <li>Y: {{ gyros.y }}</li>
+      <li>Z: {{ gyros.z }}</li>
     </ul>
     </div>
     `,
