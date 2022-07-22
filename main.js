@@ -9,8 +9,8 @@ const app = Vue.createApp({
                 "SubjectInfo": null, //{"id": null, "name": "", "age": 0, "gender": ""}
                 "GroundTruth1": null,
                 "GroundTruth2": null,
-                "record1": null, //{"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0}
-                "record2": null  //{"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0}
+                "record1": null, //{"started": null, "accels": [], "gyros": [], "touches": [], "dels": []}
+                "record2": null  //{"started": null, "accels": [], "gyros": [], "touches": [], "dels": []}
             },
             accels: {x: 0, y: 0, z: 0},
             gyros: {x: 0, y: 0, z: 0},
@@ -44,5 +44,13 @@ const app = Vue.createApp({
             }
             this.eventNum++
         },
+        addSensorsData(sensorsData){
+            if (this.runData["record1"] == null){
+                this.runData["record1"] = sensorsData
+            } else {
+                this.runData["record2"] = sensorsData
+            }
+            this.eventNum++
+        }
     }
 })

@@ -63,13 +63,14 @@ app.component('lorem-ipsum', {
     }
   },
   skip() {
-    let initialForm = {
-      id: Date.now(),
-      name: "Sudo san",
-      age: 9999,
-      gender: "God"
+    let sensorsData = {
+      "started": Date.now(),
+      "accels": [{x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}],
+      "gyros": [{x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}],
+      "touches": [0, 2, 5],
+      "dels": [1, 4, 12]
     }
-    this.$emit('initial-form-submitted', initialForm)
+    this.$emit('sensors-data-submitted', sensorsData)
   },
   beforeMount(){
     this.rngText(this.input)

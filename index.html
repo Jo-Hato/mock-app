@@ -11,10 +11,6 @@
   <body>
     <div id="app">
       <header>MockApp Develop Branch</header>
-      <div v-if="debugMode">
-        <p>Debugger: eventNum = {{ eventNum }}</p>
-        <p>Debugger: runData = {{ runData }}</p>
-      </div>
 
       <div v-if="eventNum === 0">
         <initial-setup :accels="accels" :gyros="gyros"></initial-setup>
@@ -25,13 +21,17 @@
       </div>
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" :debug-mode="debugMode"></initial-form>
       <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" :debug-mode="debugMode"></ground-survey>
-      <lorem-ipsum v-else-if="eventNum === 3"></lorem-ipsum><br>
+      <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData"></lorem-ipsum><br>
 
       <!--
         <lorem-ipsum></lorem-ipsum><br>
         <subtraction></subtraction><br>
         <scwt></scwt><br>
       -->
+      <div v-if="debugMode">
+        <p>Debugger: eventNum = {{ eventNum }}</p>
+        <p>Debugger: runData = {{ runData }}</p>
+      </div>
     </div>
     <!-- Import App -->
     <script src="./main.js"></script>
