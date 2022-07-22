@@ -78,11 +78,11 @@ app.component('ground-survey', {
     skip() {
       let truthForm = {
         tired: 999,
-        happy: -999,
+        happy: 999,
         stress: 999,
-        energy: -999,
+        energy: 999,
         angry: 999,
-        interested: 3,
+        interested: 999,
       }
       this.$emit('ground-truth-submitted', truthForm)
     }

@@ -11,7 +11,7 @@ app.component('lorem-ipsum', {
     <input id="input" v-model="input"><br>
 
     <button class="button" @click="startLorem()">Start</button>
-    <button class="button" @click="submitForm()">Submit</button>
+    <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
     <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
 
   </div>`,

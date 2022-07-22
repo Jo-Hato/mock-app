@@ -6,9 +6,9 @@ const app = Vue.createApp({
             FREQ: 20,
 
             runData: {
-                "SubjectInfo": null, //{"id": null, "name": "", "age": 0, "gender": ""}
-                "GroundTruth1": null,
-                "GroundTruth2": null,
+                "subjectInfo": null, //{"id": null, "name": "", "age": 0, "gender": ""}
+                "groundTruth1": null,
+                "groundTruth2": null,
                 "record1": null, //{"started": null, "accels": [], "gyros": [], "touches": [], "dels": []}
                 "record2": null  //{"started": null, "accels": [], "gyros": [], "touches": [], "dels": []}
             },
@@ -33,14 +33,14 @@ const app = Vue.createApp({
                 this.gyros.z = event.rotationRate.gamma
         },
         addInitialForm(initialForm) {
-            this.runData["SubjectInfo"] = initialForm
+            this.runData["subjectInfo"] = initialForm
             this.eventNum++
         },
         addGroundTruth(truthForm){
-            if (this.runData["GroundTruth1"] == null){
-                this.runData["GroundTruth1"] = truthForm
+            if (this.runData["groundTruth1"] == null){
+                this.runData["groundTruth1"] = truthForm
             } else {
-                this.runData["GroundTruth2"] = truthForm
+                this.runData["groundTruth2"] = truthForm
             }
             this.eventNum++
         },
