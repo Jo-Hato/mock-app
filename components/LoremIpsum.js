@@ -5,16 +5,24 @@ app.component('lorem-ipsum', {
   <p>Please write the text below.</p>
   <p>Current Score: {{ score }}</p>
 
-  <form class="review-form" @submit.prevent="onSubmit">
+  <div class="box">
 
     <label style="font-size: 2em;" for="input"><b>{{ rng_text }}</b></label>
     <input id="input" v-model="input"><br>
 
-    <input class="button" type="submit" value="Submit">
+    <input class="button" @click="submitForm()">
 
-  </form>`,
+  </div>`,
+  props: {
+    debugMode: {
+      type: Boolean,
+      required: true
+    }
+  },
   data() {
     return {
+      internalStateNum : 0,
+      isStress : false,
       texts: [
         "lorem ipsum dolor sit amet",
         "consectetur adipiscing elit",
@@ -35,7 +43,7 @@ app.component('lorem-ipsum', {
       }
       this.rng_text = newStr
     },
-    onSubmit() {
+    submitForm() {
       if (this.input != this.rng_text) {
         alert('You have typo(s) in your submission.\nPlease revise you text and resubmit.')
         return
@@ -53,6 +61,15 @@ app.component('lorem-ipsum', {
       }
       //addScore, up til 5, and then move to next eventNumber
     }
+  },
+  skip() {
+    let initialForm = {
+      id: Date.now(),
+      name: "Sudo san",
+      age: 9999,
+      gender: "God"
+    }
+    this.$emit('initial-form-submitted', initialForm)
   },
   beforeMount(){
     this.rngText(this.input)

@@ -1,7 +1,7 @@
 app.component('initial-setup', {
     props: {
         accels: {
-          type: Array,
+          type: Object,
           required: true
         },
         gyros: {
@@ -14,9 +14,9 @@ app.component('initial-setup', {
     `<h1>Initial Setup</h1>
     <div style="margin: 2rem;">
     <ul>Accelerometers:
-      <li>X: {{ accels[0] }}</li>
-      <li>Y: {{ accels[1] }}</li>
-      <li>Z: {{ accels[2] }}</li>
+      <li>X: {{ accels.x }}</li>
+      <li>Y: {{ accels["y"] }}</li>
+      <li>Z: {{ accels.z }}</li>
     </ul>
         
     <ul>Gyrometers:

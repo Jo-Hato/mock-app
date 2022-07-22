@@ -12,18 +12,19 @@ const app = Vue.createApp({
                 "record1": null, //{"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0}
                 "record2": null  //{"started": null, "accels": [], "gyros":[], "touches": 0, "dels": 0}
             },
-            accels: [0, 0, 0],
+            //accels: [0, 0, 0],
+            accels: {x: 99, y: 0, z: 0},
             gyros: [0, 0, 0],
         }
     },
     methods: {
         handleMotion(event) {
             if (event.acceleration.x != null)
-                this.accels[0] = event.acceleration.x
+                this.accels.x = event.acceleration.x
             if (event.acceleration.y != null)
-                this.accels[1] = event.acceleration.y
+                this.accels.y = event.acceleration.y
             if (event.acceleration.z != null)
-                this.accels[2] = event.acceleration.z
+                this.accels.z = event.acceleration.z
 
             if (event.rotationRate.alpha != null)
                 this.gyros[0] = event.rotationRate.alpha
