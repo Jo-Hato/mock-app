@@ -10,7 +10,7 @@ app.component('lorem-ipsum', {
     <label style="font-size: 2em;" for="input"><b>{{ rng_text }}</b></label>
     <input id="input" v-model="input"><br>
 
-    <input class="button" @click="submitForm()">
+    <button class="button" @click="submitForm()">Submit</button>
 
   </div>`,
   props: {
