@@ -1,23 +1,35 @@
 app.component('lorem-ipsum', {
   template:
   /*html*/
-  `<h1>Texting Excercise</h1>
-  <p>Please write the text below.</p>
-  <p>Current Score: {{ score }}</p>
+  `<div>
+    <h1>Texting Excercise</h1>
+    <p>Please write the text below.</p>
+    <p>Current Score: {{ score }}</p>
 
-  <div class="box">
+    <div class="box">
 
-    <label style="font-size: 2em;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
-    <input id="input" v-model="input"><br>
+      <label style="font-size: 2em;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
+      <input id="input" v-model="input"><br>
 
-    <button class="button" @click="startLorem()">Start</button>
-    <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
-    <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
-
+      <button class="button" @click="startLorem()">Start</button>
+      <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
+      <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
+    </div>
+    <p>{{ sensorsData }}</p>
   </div>`,
   props: {
     debugMode: {
       type: Boolean,
+      required: true
+    },
+    //It might be better not to get the accels/gyros data from the parent component,
+    //but I have faith in Vue's speed, for no reason. Should be fine. I hope...
+    accels: {
+      type: Object,
+      required: true
+    },
+    gyros: {
+      type: Object,
       required: true
     }
   },
@@ -33,7 +45,14 @@ app.component('lorem-ipsum', {
         "iaculis velit in auctor nulla"],
       rng_text: "",
       input: null,
-      score: 0
+      score: 0,
+      sensorsData: {
+        "started": null,
+        "accels": [],
+        "gyros": [],
+        "touches": [],
+        "dels": []
+      }
     }
   },
   methods: {
@@ -65,8 +84,17 @@ app.component('lorem-ipsum', {
     },
     startLorem(){
       this.internalStateNum++
+      //Start recording motions
+      rec = setInterval(this.record, 50)
+      this.sensorsData.started = Date.now()
+
       //startTimer
       //If stress, show the timer
+    },
+    record() {
+      this.sensorsData.accels.push(this.accels)
+      this.sensorsData.gyros.push(this.gyros)
+      console.log(this.sensorsData)
     },
     skip() {
       let sensorsData = {

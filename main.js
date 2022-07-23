@@ -13,7 +13,7 @@ const app = Vue.createApp({
                 "record2": null  //{"started": null, "accels": [], "gyros": [], "touches": [], "dels": []}
             },
             accels: {x: 0, y: 0, z: 0},
-            gyros: {x: 0, y: 0, z: 0},
+            gyros: {x: 0, y: 0, z: 0}
         }
     },
     methods: {
