@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Vue Mastery</title>
+    <title>MockApp</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
@@ -10,23 +10,63 @@
   </head>
   <body>
     <div id="app">
-      <div class="nav-bar"></div>
+      <header>MockApp Develop Branch</header>
 
-      <div class="cart">Cart({{ cart.length }})</div>
-      <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
+      <div v-if="eventNum === 0">
+        <initial-setup :accels="accels" :gyros="gyros"></initial-setup>
+        <button style="font-size: 2rem; margin: 3rem 0 0 1rem;" id="start_demo" href="#" role="button">Allow Motion Sensor Use</button><br>
+        <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button><br>
+        <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" v-if="debugMode" @click="eventNum++">Force Next</button>
+
+      </div>
+      <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" :debug-mode="debugMode"></initial-form>
+      <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" :debug-mode="debugMode"></ground-survey>
+      <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData" :debug-mode="debugMode" :accels="accels" :gyros="gyros"></lorem-ipsum><br>
+
+      <!--
+        <lorem-ipsum></lorem-ipsum><br>
+        <subtraction></subtraction><br>
+        <scwt></scwt><br>
+      -->
+      <div v-if="debugMode">
+        <ul>Debugger:
+          <li>eventNum = {{ eventNum }}</li>
+          <li>runData:
+            <ul>
+              <li>subjectInfo: {{ runData.subjectInfo }}</li>
+              <li>groundTruth1: {{ runData.groundTruth1 }}</li>
+              <li>groundTruth2: {{ runData.groundTruth2 }}</li>
+              <li>record1: {{ runData.record1 }}</li>
+              <li>record2: {{ runData.record2 }}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-
     <!-- Import App -->
     <script src="./main.js"></script>
 
     <!-- Import Components -->
-    <script src="./components/ProductDisplay.js"></script>
-    <script src="./components/ReviewForm.js"></script>
-    <script src="./components/ReviewList.js"></script>
+    <script src="./components/InitialSetup.js"></script>
+    <script src="./components/InitialForm.js"></script>
+    <script src="./components/GroundSurvey.js"></script>
+    <script src="./components/LoremIpsum.js"></script>
+    <script src="./components/Subtraction.js"></script>
+    <script src="./components/Scwt.js"></script>
 
     <!-- Mount App -->
     <script>
       const mountedApp = app.mount('#app')
+
+      let demo_button = document.getElementById("start_demo");
+      demo_button.onclick = function(e) {
+        e.preventDefault();   
+        // Request permission for iOS 13+ devices
+        if (DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === "function") {
+          DeviceMotionEvent.requestPermission();
+        }
+        window.addEventListener("devicemotion", mountedApp.handleMotion);
+      };
     </script>
   </body>
 </html>
