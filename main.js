@@ -19,18 +19,18 @@ const app = Vue.createApp({
     methods: {
         handleMotion(event) {
             if (event.acceleration.x != null)
-                this.accels.x = event.acceleration.x.toFixed(10)
+                this.accels.x.toFixed(10) = event.acceleration.x
             if (event.acceleration.y != null)
-                this.accels.y = event.acceleration.y.toFixed(10)
+                this.accels.y.toFixed(10) = event.acceleration.y
             if (event.acceleration.z != null)
-                this.accels.z = event.acceleration.z.toFixed(10)
+                this.accels.z.toFixed(10) = event.acceleration.z
 
             if (event.rotationRate.alpha != null)
-                this.gyros.x = event.rotationRate.alpha.toFixed(10)
+                this.gyros.x.toFixed(10) = event.rotationRate.alpha
             if (event.rotationRate.beta != null)
-                this.gyros.y = event.rotationRate.beta.toFixed(10)
+                this.gyros.y.toFixed(10) = event.rotationRate.beta
             if (event.rotationRate.gamma != null)
-                this.gyros.z = event.rotationRate.gamma.toFixed(10)
+                this.gyros.z.toFixed(10) = event.rotationRate.gamma
         },
         addInitialForm(initialForm) {
             this.runData["subjectInfo"] = initialForm
