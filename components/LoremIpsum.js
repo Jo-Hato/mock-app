@@ -113,9 +113,11 @@ app.component('lorem-ipsum', {
     },
     countDown() {
       this.sec--
-      if (this.sec == 0){
+      if (this.sec == 1){
         this.end()
-        this.$emit('sensors-data-submitted', this.sensorsData)
+        setTimeout(() => {
+          this.$emit('sensors-data-submitted', this.sensorsData)
+        }, 1000);
       }
     },
     record() {
