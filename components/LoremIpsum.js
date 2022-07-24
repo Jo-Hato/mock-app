@@ -62,6 +62,8 @@ app.component('lorem-ipsum', {
         "dels": []
       },
       prevLen: 0,
+      rec: null,
+      timer: null
     }
   },
   watch: {
@@ -141,4 +143,8 @@ app.component('lorem-ipsum', {
     this.score = 0
     this.sec = 5
   },
+  beforeDestroy(){
+    clearInterval(this.rec)
+    clearInterval(this.timer)
+  }
 })
