@@ -99,10 +99,6 @@ app.component('lorem-ipsum', {
       }
       //addScore, up til 5, and then move to next eventNumber
     },
-    touch() {
-      this.delNum++
-      console.log(this.delNum)
-    },
     startLorem(){
       this.internalStateNum++
       //Start recording motions
@@ -115,6 +111,8 @@ app.component('lorem-ipsum', {
     record() {
       this.sensorsData.accels.push(this.accels)
       this.sensorsData.gyros.push(this.gyros)
+      this.sensorsData.touches.push(this.touchNum)
+      this.sensorsData.dels(this.delNum)
     },
     skip() {
       let sensorsData = {
