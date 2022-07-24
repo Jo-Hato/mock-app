@@ -15,7 +15,7 @@ app.component('initial-setup', {
       <h1>Initial Setup</h1>
       <div style="margin: 2rem;">
       <ul>Accelerometers:
-        <li>X: !!!{ accels.x }}</li>
+        <li>X: {{ accels.x }}</li>
         <li>Y: {{ accels.y }}</li>
         <li>Z: {{ accels.z }}</li>
       </ul>
