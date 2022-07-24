@@ -12,6 +12,7 @@
     <div id="app">
       <header>MockApp Develop Branch</header>
       <p>touchNum: {{ touchNum }}</p>
+      <p>delNum: {{ delNum }}</p>
       <div id="display-area1" class="box"></div>
 
       <div v-if="eventNum === 0">
@@ -20,9 +21,9 @@
         <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button><br>
         <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" v-if="debugMode" @click="eventNum++">Force Next</button>
       </div>
-      <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" :debug-mode="debugMode"></initial-form>
-      <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" :debug-mode="debugMode"></ground-survey>
-      <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touchNum="touchNum" :delNum="delNum"></lorem-ipsum><br>
+      <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" @touch="updateTouch" @del-key="updateDel" :debug-mode="debugMode"></initial-form>
+      <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" @touch="updateTouch" :debug-mode="debugMode"></ground-survey>
+      <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum"></lorem-ipsum><br>
 
       <!--
         <lorem-ipsum></lorem-ipsum><br>

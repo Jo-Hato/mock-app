@@ -10,10 +10,10 @@ app.component('initial-form', {
         <input id="name" v-model="name"><br>
 
         <label for="age">Age:</label><br>
-        <input age="age" type="number" step="1" pattern="\d" v-model.number="age"><br>
+        <input id="age" type="number" step="1" pattern="\d" v-model.number="age"><br>
 
         <label for="gender">Gender:</label><br>
-        <select id="gender" v-model="gender">
+        <select id="gender" v-model="gender" @click="touched()">
           <option>Male</option>
           <option>Female</option>
         </select><br> 
@@ -35,9 +35,30 @@ app.component('initial-form', {
         age: null,
         gender: null,
         initialForm: {},
+        namePrevLen: 0,
+        agePrevLen: 0,
+      }
+    },
+    watch: {
+      name() {
+        this.$emit('touch')
+        if (this.namePrevLen > this.name.length) {
+          this.$emit('del-key')
+        }
+        this.namePrevLen = this.name.length
+      },
+      age() {
+        this.$emit('touch')
+        if (this.agePrevLen > String(this.age).length) {
+          this.$emit('del-key')
+        }
+        this.agePrevLen = String(this.age).length
       }
     },
     methods: {
+      touched() {
+        this.$emit('touch')
+      },
       submitForm() {
         if (this.name === '' || this.age === null || this.gender === null) {
           alert('Info is incomplete. Please fill out every field.')

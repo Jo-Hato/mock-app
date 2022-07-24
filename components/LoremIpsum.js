@@ -7,11 +7,12 @@ app.component('lorem-ipsum', {
     <p>Current Score: {{ score }}</p>
     <p>touchNum: {{ touchNum }}</p>
     <p>delNum: {{ delNum }}</p>
+    <p>str: {{ input }}</p>
 
     <div class="box">
 
       <label style="font-size: 2em;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
-      <input id="input" v-model="input" @change="touch()"><br>
+      <input id="input" v-model="input"><br>
 
       <button class="button" @click="startLorem()">Start</button>
       <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
@@ -61,7 +62,17 @@ app.component('lorem-ipsum', {
         "gyros": [],
         "touches": [],
         "dels": []
+      },
+      prevLen: 0
+    }
+  },
+  watch: {
+    input() {
+      this.$emit('touch')
+      if (this.prevLen > this.input.length) {
+        this.$emit('del-key')
       }
+      this.prevLen = this.input.length
     }
   },
   methods: {
@@ -93,7 +104,7 @@ app.component('lorem-ipsum', {
     },
     touch() {
       this.delNum++
-      console.log("!!!")
+      console.log(this.delNum)
     },
     startLorem(){
       this.internalStateNum++

@@ -14,9 +14,8 @@ const app = Vue.createApp({
             },
             accels: {x: 0.0, y: 0.0, z: 0.0},
             gyros: {x: 0.0, y: 0.0, z: 0.0},
-            PRECISION: 1,
             touchNum: 0,
-            delNum: 12
+            delNum: 0
         }
     },
     methods: {
@@ -39,6 +38,12 @@ const app = Vue.createApp({
                 this.runData["record2"] = sensorsData
             }
             this.eventNum++
+        },
+        updateTouch(){
+            this.touchNum++
+        },
+        updateDel(){
+            this.delNum++
         }
     }
 })
