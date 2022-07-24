@@ -63,8 +63,6 @@ app.component('lorem-ipsum', {
       },
       prevLen: 0,
       time: 0,
-      pollingRec: null,
-      pollingTimer: null
     }
   },
   watch: {
