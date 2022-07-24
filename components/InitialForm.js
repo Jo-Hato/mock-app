@@ -59,6 +59,7 @@ app.component('initial-form', {
       compositionUpdate: function(event)
       {
           this.name = event.data;
+          this.$emit('touch')
       },
       touched() {
         this.$emit('touch')
