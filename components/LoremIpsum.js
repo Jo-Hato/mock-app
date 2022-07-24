@@ -1,21 +1,22 @@
 app.component('lorem-ipsum', {
   template:
   /*html*/
-  `<div :click="touch()">
+  `<div>
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
     <p>Current Score: {{ score }}</p>
+    <p>touchNum: {{ touchNum }}</p>
+    <p>delNum: {{ delNum }}</p>
 
     <div class="box">
 
       <label style="font-size: 2em;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
-      <input id="input" v-model="input"><br>
+      <input id="input" v-model="input" @change="touch()"><br>
 
       <button class="button" @click="startLorem()">Start</button>
       <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
     </div>
-    <p>{{ sensorsData.touches }}</p>
   </div>`,
   props: {
     debugMode: {
@@ -30,6 +31,14 @@ app.component('lorem-ipsum', {
     },
     gyros: {
       type: Object,
+      required: true
+    },
+    touchNum: {
+      type: Number,
+      required: true
+    },
+    delNum: {
+      type: Number,
       required: true
     }
   },
@@ -83,6 +92,7 @@ app.component('lorem-ipsum', {
       //addScore, up til 5, and then move to next eventNumber
     },
     touch() {
+      this.delNum++
       console.log("!!!")
     },
     startLorem(){

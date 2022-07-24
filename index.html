@@ -11,7 +11,7 @@
   <body>
     <div id="app">
       <header>MockApp Develop Branch</header>
-      <p>display area</p>
+      <p>touchNum: {{ touchNum }}</p>
       <div id="display-area1" class="box"></div>
 
       <div v-if="eventNum === 0">
@@ -22,7 +22,7 @@
       </div>
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" :debug-mode="debugMode"></initial-form>
       <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" :debug-mode="debugMode"></ground-survey>
-      <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData" :debug-mode="debugMode" :accels="accels" :gyros="gyros"></lorem-ipsum><br>
+      <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touchNum="touchNum" :delNum="delNum"></lorem-ipsum><br>
 
       <!--
         <lorem-ipsum></lorem-ipsum><br>
@@ -88,35 +88,18 @@
       //Touch Events
       const displayArea1 = document.getElementById("display-area1")
       const touchArea1 = document.getElementById("app")
-
       // touchstartイベント
       touchArea1.addEventListener("touchstart", () => {
-          displayArea1.innerHTML = getTimeStamp() + " touchstart"
+        mountedApp.touchNum++
+        displayArea1.innerHTML = getTimeStamp() + " touchstart"
       })
-
-      // touchendイベント
-      touchArea1.addEventListener("touchend", () => {
-          displayArea1.innerHTML = getTimeStamp() + " touchend"
-      })
-
-      // touchmoveイベント
-      touchArea1.addEventListener("touchmove", () => {
-          event.preventDefault();  // 画面スクロールを防止
-          displayArea1.innerHTML = getTimeStamp() + " touchmove"
-      })
-
-      // touchcancelイベント
-      touchArea1.addEventListener("touchcancel", () => {
-          displayArea1.innerHTML = getTimeStamp() + " touchcacel"
-      })
-
       // タイムスタンプ取得
       function getTimeStamp(){
-          const date = new Date()
-          return ('0' + date.getHours()).slice(-2)
-              + ':' + ('0' + date.getMinutes()).slice(-2)
-              + ':' + ('0' + date.getSeconds()).slice(-2)
-              + ':' + ('0' + date.getMilliseconds()).slice(-3)
+        const date = new Date()
+        return ('0' + date.getHours()).slice(-2)
+          + ':' + ('0' + date.getMinutes()).slice(-2)
+          + ':' + ('0' + date.getSeconds()).slice(-2)
+          + ':' + ('0' + date.getMilliseconds()).slice(-3)
       }
     </script>
   </body>
