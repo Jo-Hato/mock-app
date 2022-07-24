@@ -59,6 +59,7 @@
       const mountedApp = app.mount('#app')
 
       let PRECISION = 1
+      let lastMove = 0
       let demo_button = document.getElementById("start_demo");
       demo_button.onclick = function(e) {
         e.preventDefault();   
@@ -67,6 +68,7 @@
           DeviceMotionEvent.requestPermission();
         }
         window.addEventListener("devicemotion", function(event) {
+          if(Date.now() - lastMove > 1000) {
             if (event.acceleration.x != null)
               mountedApp.accels.x = event.acceleration.x.toFixed(PRECISION)
             if (event.acceleration.y != null)
@@ -80,6 +82,8 @@
               mountedApp.gyros.y = event.rotationRate.beta.toFixed(PRECISION)
             if (event.rotationRate.gamma != null)
               mountedApp.gyros.z = event.rotationRate.gamma.toFixed(PRECISION)
+            lastMove = Date.now();
+          } 
         });
       };
     </script>
