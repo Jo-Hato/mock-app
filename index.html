@@ -11,13 +11,14 @@
   <body>
     <div id="app">
       <header>MockApp Develop Branch</header>
+      <p>display area</p>
+      <div id="display-area1" class="box"></div>
 
       <div v-if="eventNum === 0">
         <initial-setup :accels="accels" :gyros="gyros"></initial-setup>
         <button style="font-size: 2rem; margin: 3rem 0 0 1rem;" id="start_demo" href="#" role="button">Allow Motion Sensor Use</button><br>
         <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button><br>
         <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" v-if="debugMode" @click="eventNum++">Force Next</button>
-
       </div>
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" :debug-mode="debugMode"></initial-form>
       <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" :debug-mode="debugMode"></ground-survey>
@@ -43,14 +44,6 @@
         </ul>
       </div>
     </div>
-
-    <div id="container1">
-    <p>touch area</p>
-    <div id="touch-area1" class="box"></div>
-    <p>display area</p>
-    <div id="display-area1" class="box"></div>
-    </div>
-
     <!-- Import App -->
     <script src="./main.js"></script>
 
