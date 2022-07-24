@@ -15,6 +15,8 @@ app.component('lorem-ipsum', {
       <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
     </div>
+    <p>{{ sensorsData.touches }}</p>
+    <p>{{ sensorsData.dels }}</p>
   </div>`,
   props: {
     debugMode: {
