@@ -19,6 +19,10 @@ const app = Vue.createApp({
         }
     },
     methods: {
+        compositionUpdate: function(event)
+        {
+            //IDK what the heck this does, but it makes touch/del detection work on mobile devices...
+        },
         addInitialForm(initialForm) {
             this.runData["subjectInfo"] = initialForm
             this.eventNum++
