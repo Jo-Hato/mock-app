@@ -114,8 +114,7 @@ app.component('lorem-ipsum', {
     countDown() {
       this.sec--
       if (this.sec == 0){
-        clearInterval(this.rec)
-        clearInterval(this.timer)
+        this.end()
         this.$emit('sensors-data-submitted', this.sensorsData)
       }
     },
@@ -124,6 +123,10 @@ app.component('lorem-ipsum', {
       this.sensorsData.gyros.push(this.gyros)
       this.sensorsData.touches.push(this.touchNum)
       this.sensorsData.dels.push(this.delNum)
+    },
+    end(){
+      clearInterval(this.rec)
+      clearInterval(this.timer)
     },
     skip() {
       let sensorsData = {
@@ -139,6 +142,6 @@ app.component('lorem-ipsum', {
   beforeMount(){
     this.rngText(this.input)
     this.score = 0
-    this.sec = 30
+    this.sec = 5
   },
 })
