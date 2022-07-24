@@ -62,8 +62,6 @@ app.component('lorem-ipsum', {
         "dels": []
       },
       prevLen: 0,
-      rec: null,
-      timer: null
     }
   },
   watch: {
