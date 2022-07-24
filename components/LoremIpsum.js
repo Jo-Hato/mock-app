@@ -4,7 +4,7 @@ app.component('lorem-ipsum', {
   `<div>
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
-    <p v-show="isStress || debugMode" style="color: red;">{{ sec }} second(s) left</p>
+    <p v-show="isStress || debugMode" style="color: red;">{{ time }} second(s) left</p>
     <p>Current Score: {{ score }}</p>
 
     <div class="box">
@@ -128,7 +128,7 @@ app.component('lorem-ipsum', {
     pollTimer() {
       this.pollingTimer = setInterval(() => {
         this.time--
-        if (this.timer == 0) {
+        if (this.time == 0) {
           this.$emit('sensors-data-submitted', this.sensorsData)
         }
       }, 1000)
