@@ -112,8 +112,9 @@ app.component('lorem-ipsum', {
     countDown() {
       this.sec--
       if (this.sec == 0){
-        this.$emit('sensors-data-submitted', this.sensorsData)
         clearInterval(rec)
+        clearInterval(timer)
+        this.$emit('sensors-data-submitted', this.sensorsData)
       }
 
     },
