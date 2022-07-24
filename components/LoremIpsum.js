@@ -143,7 +143,7 @@ app.component('lorem-ipsum', {
     this.score = 0
     this.sec = 5
   },
-  beforeDestroy(){
+  beforeUnmount(){
     clearInterval(this.rec)
     clearInterval(this.timer)
   }
