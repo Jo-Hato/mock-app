@@ -5,16 +5,13 @@ app.component('lorem-ipsum', {
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
     <p>Current Score: {{ score }}</p>
-    <p>touchNum: {{ touchNum }}</p>
-    <p>delNum: {{ delNum }}</p>
-    <p>str: {{ input }}</p>
 
     <div class="box">
 
       <label style="font-size: 2em;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
       <input id="input" v-model="input"><br>
 
-      <button class="button" @click="startLorem()">Start</button>
+      <button :disabled="internalStateNum == 1" class="button" @click="startLorem()">Start</button>
       <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
     </div>

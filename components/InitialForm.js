@@ -56,6 +56,10 @@ app.component('initial-form', {
       }
     },
     methods: {
+      compositionUpdate: function(event)
+      {
+          this.name = event.data;
+      },
       touched() {
         this.$emit('touch')
       },
