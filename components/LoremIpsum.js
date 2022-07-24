@@ -61,7 +61,9 @@ app.component('lorem-ipsum', {
         "touches": [],
         "dels": []
       },
-      prevLen: 0
+      prevLen: 0,
+      rec: null,
+      timer: null
     }
   },
   watch: {
@@ -103,20 +105,19 @@ app.component('lorem-ipsum', {
     startLorem(){
       this.internalStateNum++
       //Start recording motions
-      rec = setInterval(this.record, 50)
+      this.rec = setInterval(this.record, 50)
       this.sensorsData.started = Date.now()
 
       //startTimer
-      timer = setInterval(this.countDown, 1000)
+      this.timer = setInterval(this.countDown, 1000)
     },
     countDown() {
       this.sec--
       if (this.sec == 0){
-        clearInterval(rec)
-        clearInterval(timer)
+        clearInterval(this.rec)
+        clearInterval(this.timer)
         this.$emit('sensors-data-submitted', this.sensorsData)
       }
-
     },
     record() {
       this.sensorsData.accels.push(this.accels)
