@@ -62,8 +62,9 @@ app.component('lorem-ipsum', {
         "dels": []
       },
       prevLen: 0,
-      rec: null,
-      timer: null
+      time: 0,
+      pollingRec: null,
+      pollingTimer: null
     }
   },
   watch: {
@@ -104,28 +105,33 @@ app.component('lorem-ipsum', {
     },
     startLorem(){
       this.internalStateNum++
-      //Start recording motions
-      this.rec = setInterval(this.record, 50)
       this.sensorsData.started = Date.now()
-
+      //Start recording motions
+      this.pollRecord()
       //startTimer
-      this.timer = setInterval(this.countDown, 1000)
+      this.pollTimer()
     },
     countDown() {
       this.sec--
       if (this.sec == 1){
-        clearInterval(this.rec)
-        clearInterval(this.timer)
-        setTimeout(() => {
-          this.$emit('sensors-data-submitted', this.sensorsData)
-        }, 1000);
+        this.$emit('sensors-data-submitted', this.sensorsData)
       }
     },
-    record() {
-      this.sensorsData.accels.push(this.accels)
-      this.sensorsData.gyros.push(this.gyros)
-      this.sensorsData.touches.push(this.touchNum)
-      this.sensorsData.dels.push(this.delNum)
+    pollRecord() {
+      this.pollingRec = setInterval(() => {
+        this.sensorsData.accels.push(this.accels)
+        this.sensorsData.gyros.push(this.gyros)
+        this.sensorsData.touches.push(this.touchNum)
+        this.sensorsData.dels.push(this.delNum)
+      }, 50)
+    },
+    pollTimer() {
+      this.pollingTimer = setInterval(() => {
+        this.time--
+        if (this.timer == 0) {
+          this.$emit('sensors-data-submitted', this.sensorsData)
+        }
+      }, 1000)
     },
     skip() {
       let sensorsData = {
@@ -141,10 +147,10 @@ app.component('lorem-ipsum', {
   beforeMount(){
     this.rngText(this.input)
     this.score = 0
-    this.sec = 5
+    this.time = 5
   },
   beforeUnmount(){
-    clearInterval(this.rec)
-    clearInterval(this.timer)
+    clearInterval(this.pollingRec)
+    clearInterval(this.pollingTimer)
   }
 })
