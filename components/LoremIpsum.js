@@ -4,10 +4,10 @@ app.component('lorem-ipsum', {
   `<div>
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
+    <p v-show="isStress || debugMode" style="color: red;">{{ sec }} second(s) left</p>
     <p>Current Score: {{ score }}</p>
 
     <div class="box">
-
       <label style="font-size: 2em;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
       <input id="input" v-model="input"><br>
 
@@ -15,8 +15,6 @@ app.component('lorem-ipsum', {
       <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
     </div>
-    <p>{{ sensorsData.touches }}</p>
-    <p>{{ sensorsData.dels }}</p>
   </div>`,
   props: {
     debugMode: {
@@ -45,7 +43,8 @@ app.component('lorem-ipsum', {
   data() {
     return {
       internalStateNum : 0,
-      isStress : false,
+      isStress : true,
+      sec : 0,
       texts: [
         "lorem ipsum dolor sit amet",
         "consectetur adipiscing elit",
@@ -108,7 +107,15 @@ app.component('lorem-ipsum', {
       this.sensorsData.started = Date.now()
 
       //startTimer
-      //If stress, show the timer
+      timer = setInterval(this.countDown, 1000)
+    },
+    countDown() {
+      this.sec--
+      if (this.sec == 0){
+        this.$emit('sensors-data-submitted', this.sensorsData)
+        clearInterval(rec)
+      }
+
     },
     record() {
       this.sensorsData.accels.push(this.accels)
@@ -124,11 +131,12 @@ app.component('lorem-ipsum', {
         "touches": [0, 2, 5, 8, 9, 11],
         "dels": [1, 4, 12, 12, 15, 20]
       }
-      this.$emit('sensors-data-submitted', sensorsData)
+      this.$emit('sensors-data-submitted', this.sensorsData)
     },
   },
   beforeMount(){
     this.rngText(this.input)
     this.score = 0
+    this.sec = 30
   },
 })

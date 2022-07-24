@@ -36,6 +36,9 @@ const app = Vue.createApp({
             }
             this.eventNum++
         },
+        skip(){
+            this.eventNum++
+        },
         addSensorsData(sensorsData){
             if (this.runData["record1"] == null){
                 this.runData["record1"] = sensorsData

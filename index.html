@@ -11,9 +11,6 @@
   <body>
     <div id="app">
       <header>MockApp Develop Branch</header>
-      <p>touchNum: {{ touchNum }}</p>
-      <p>delNum: {{ delNum }}</p>
-      <div id="display-area1" class="box"></div>
 
       <div v-if="eventNum === 0">
         <initial-setup :accels="accels" :gyros="gyros"></initial-setup>
@@ -23,7 +20,8 @@
       </div>
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" @touch="updateTouch" @del-key="updateDel" :debug-mode="debugMode"></initial-form>
       <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" @touch="updateTouch" :debug-mode="debugMode"></ground-survey>
-      <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum"></lorem-ipsum><br>
+      <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum"></lorem-ipsum>
+      <next-screen v-else-if="eventNum === 4" @skip="skip"></next-screen>
 
       <!--
         <lorem-ipsum></lorem-ipsum><br>
@@ -31,8 +29,11 @@
         <scwt></scwt><br>
       -->
       <div v-if="debugMode">
+        
         <ul>Debugger:
           <li>eventNum = {{ eventNum }}</li>
+          <li>touchNum: {{ touchNum }} <div id="display-area1"></div></li>
+          <li>delNum: {{ delNum }}</li>
           <li>runData:
             <ul>
               <li>subjectInfo: {{ runData.subjectInfo }}</li>
@@ -55,6 +56,7 @@
     <script src="./components/LoremIpsum.js"></script>
     <script src="./components/Subtraction.js"></script>
     <script src="./components/Scwt.js"></script>
+    <script src="./components/NextScreen.js"></script>
 
     <!-- Mount App -->
     <script>

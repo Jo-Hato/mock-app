@@ -1,18 +1,20 @@
 app.component('subtraction', {
   template:
   /*html*/
-  `<h1>Math Excercise</h1>
-  <p>Please enter the answer below.</p>
-  <p>Current Score: {{ score }}</p>
+  `<div>
+    <h1>Math Excercise</h1>
+    <p>Please enter the answer below.</p>
+    <p>Current Score: {{ score }}</p>
 
-  <form class="review-form" @submit.prevent="onSubmit">
-    <h2>{{ num0 }} - {{ num1 }} = ?</h2>
-    <label for="input">Input your answer here:</label>
-    <input id="input" v-model="input" type="number" pattern="\d"><br>
+    <form class="review-form" @submit.prevent="onSubmit">
+      <h2>{{ num0 }} - {{ num1 }} = ?</h2>
+      <label for="input">Input your answer here:</label>
+      <input id="input" v-model="input" type="number" pattern="\d"><br>
 
-    <input class="button" type="submit" value="Submit">
+      <input class="button" type="submit" value="Submit">
 
-  </form>`,
+    </form>
+  </div>`,
   data() {
     return {
       num0: 0,
