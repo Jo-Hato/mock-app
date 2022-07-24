@@ -1,7 +1,7 @@
 app.component('lorem-ipsum', {
   template:
   /*html*/
-  `<div>
+  `<div :click="touch()">
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
     <p>Current Score: {{ score }}</p>
@@ -15,7 +15,7 @@ app.component('lorem-ipsum', {
       <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
     </div>
-    <p>{{ sensorsData }}</p>
+    <p>{{ sensorsData.touches }}</p>
   </div>`,
   props: {
     debugMode: {
@@ -82,6 +82,9 @@ app.component('lorem-ipsum', {
       }
       //addScore, up til 5, and then move to next eventNumber
     },
+    touch() {
+      console.log("!!!")
+    },
     startLorem(){
       this.internalStateNum++
       //Start recording motions
@@ -94,7 +97,6 @@ app.component('lorem-ipsum', {
     record() {
       this.sensorsData.accels.push(this.accels)
       this.sensorsData.gyros.push(this.gyros)
-      console.log(this.sensorsData)
     },
     skip() {
       let sensorsData = {

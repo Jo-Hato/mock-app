@@ -43,6 +43,14 @@
         </ul>
       </div>
     </div>
+
+    <div id="container1">
+    <p>touch area</p>
+    <div id="touch-area1" class="box"></div>
+    <p>display area</p>
+    <div id="display-area1" class="box"></div>
+    </div>
+
     <!-- Import App -->
     <script src="./main.js"></script>
 
@@ -58,6 +66,7 @@
     <script>
       const mountedApp = app.mount('#app')
 
+      //Motion Sensor
       let PRECISION = 1
       let demo_button = document.getElementById("start_demo");
       demo_button.onclick = function(e) {
@@ -82,6 +91,40 @@
             mountedApp.gyros.z = event.rotationRate.gamma.toFixed(PRECISION)
         });
       };
+
+      //Touch Events
+      const displayArea1 = document.getElementById("display-area1")
+      const touchArea1 = document.getElementById("app")
+
+      // touchstartイベント
+      touchArea1.addEventListener("touchstart", () => {
+          displayArea1.innerHTML = getTimeStamp() + " touchstart"
+      })
+
+      // touchendイベント
+      touchArea1.addEventListener("touchend", () => {
+          displayArea1.innerHTML = getTimeStamp() + " touchend"
+      })
+
+      // touchmoveイベント
+      touchArea1.addEventListener("touchmove", () => {
+          event.preventDefault();  // 画面スクロールを防止
+          displayArea1.innerHTML = getTimeStamp() + " touchmove"
+      })
+
+      // touchcancelイベント
+      touchArea1.addEventListener("touchcancel", () => {
+          displayArea1.innerHTML = getTimeStamp() + " touchcacel"
+      })
+
+      // タイムスタンプ取得
+      function getTimeStamp(){
+          const date = new Date()
+          return ('0' + date.getHours()).slice(-2)
+              + ':' + ('0' + date.getMinutes()).slice(-2)
+              + ':' + ('0' + date.getSeconds()).slice(-2)
+              + ':' + ('0' + date.getMilliseconds()).slice(-3)
+      }
     </script>
   </body>
 </html>
