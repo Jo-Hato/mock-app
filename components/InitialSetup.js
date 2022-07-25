@@ -18,6 +18,7 @@ app.component('initial-setup', {
         <li>X: {{ accels.x }}</li>
         <li>Y: {{ accels.y }}</li>
         <li>Z: {{ accels.z }}</li>
+        <li>{{ typeof(accels.x) }}</li>
       </ul>
           
       <ul>Gyrometers:
