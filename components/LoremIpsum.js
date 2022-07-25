@@ -63,6 +63,7 @@ app.component('lorem-ipsum', {
       },
       prevLen: 0,
       time: 0,
+      doge: null
     }
   },
   watch: {
@@ -105,32 +106,9 @@ app.component('lorem-ipsum', {
       this.internalStateNum++
       this.sensorsData.started = Date.now()
       //Start recording motions
-      this.pollRecord()
+
       //startTimer
-      this.pollTimer()
-    },
-    countDown() {
-      this.sec--
-      if (this.sec == 1){
-        this.$emit('sensors-data-submitted', this.sensorsData)
-      }
-    },
-    pollRecord() {
-      this.pollingRec = setInterval(() => {
-        this.sensorsData.accels.push(this.accels)
-        this.sensorsData.gyros.push(this.gyros)
-        this.sensorsData.touches.push(this.touchNum)
-        this.sensorsData.dels.push(this.delNum)
-      }, 50)
-    },
-    pollTimer() {
-      this.pollingTimer = setInterval(() => {
-        this.time--
-        if (this.time == 0) {
-          clearInterval(this.pollingRec)
-          clearInterval(this.pollingTimer)
-        }
-      }, 1000)
+
     },
     skip() {
       /*let sensorsData = {
@@ -148,8 +126,13 @@ app.component('lorem-ipsum', {
     this.score = 0
     this.time = 5
   },
+  onMounted() {
+    this.doge = setInterval(() => {
+      this.sensorsData.started = Date.now()
+      this.$emit('sensors-data-submitted', this.sensorsData)
+    }, 1000)
+  },
   beforeUnmount(){
-    clearInterval(this.pollingRec)
-    clearInterval(this.pollingTimer)
+    clearInterval(this.doge)
   }
 })
