@@ -118,14 +118,13 @@ app.component('lorem-ipsum', {
         clearInterval(this.rec)
         clearInterval(this.timer)
         this.internalStateNum++
-        this.shit = true
         this.$emit('sensors-data-submitted', this.sensorsData)
       }
     },
     record() {
-      if (!this.shit) {
-        this.sensorsData.accels.push(this.accels.x)
-        this.sensorsData.gyros.push(this.gyros.x)
+      if (true) {
+        this.sensorsData.accels.push({"x": this.accels.x, "y": this.accels.y, "z": this.accels.z})
+        this.sensorsData.gyros.push({"x": this.gyros.x, "y": this.gyros.y, "z": this.gyros.z})
         this.sensorsData.touches.push(this.touchNum)
         this.sensorsData.dels.push(this.delNum)
       }
