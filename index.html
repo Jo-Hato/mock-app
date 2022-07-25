@@ -73,9 +73,9 @@
         }
         window.addEventListener("devicemotion", function(event) {
           if (event.acceleration.x != null)
-            mountedApp.accels.x = event.acceleration.x.toFixed(PRECISION) + 0
+            mountedApp.accels.x = parseFloat(event.acceleration.x.toFixed(PRECISION))
           if (event.acceleration.y != null)
-            mountedApp.accels.y = event.acceleration.y.toFixed(PRECISION) + 0
+            mountedApp.accels.y = parseFloat(event.acceleration.y.toFixed(PRECISION) + 0)
           if (event.acceleration.z != null)
             mountedApp.accels.z = event.acceleration.z.toFixed(PRECISION) + 0
 
