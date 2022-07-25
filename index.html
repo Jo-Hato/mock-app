@@ -22,10 +22,12 @@
       <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" @touch="updateTouch" :debug-mode="debugMode"></ground-survey>
       <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum" :event-num="eventNum"></lorem-ipsum>
       <next-screen v-else-if="eventNum === 4" @skip="skip"></next-screen>
-      <lorem-ipsum v-else-if="eventNum === 5" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum" :event-num="eventNum"></lorem-ipsum>
+      <subtraction v-else-if="eventNum === 5" :debug-mode="debugMode" @skip="skip"></subtraction>
+      <next-screen v-else-if="eventNum === 6" @skip="skip"></next-screen>
+      
 
       <!--
-        <lorem-ipsum></lorem-ipsum><br>
+        <lorem-ipsum v-else-if="eventNum === 5" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum" :event-num="eventNum"></lorem-ipsum>
         <subtraction></subtraction><br>
         <scwt></scwt><br>
       -->

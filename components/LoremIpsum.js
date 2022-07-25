@@ -68,7 +68,6 @@ app.component('lorem-ipsum', {
       prevLen: 0,
       rec: null,
       timer: null,
-      shit: false
     }
   },
   watch: {
@@ -149,8 +148,8 @@ app.component('lorem-ipsum', {
   },
   beforeMount(){
     this.rngText(this.input)
-    this.score = 0
-    this.sec = 30
+    this.score = 4
+    this.sec = 60
   },
   beforeUnmount(){
     //might be redundant, but I don't care. Better worry than sorry.

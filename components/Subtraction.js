@@ -4,26 +4,59 @@ app.component('subtraction', {
   `<div>
     <h1>Math Excercise</h1>
     <p>Please enter the answer below.</p>
+    <p style="color: red;">{{ sec }} second(s) left</p>
     <p>Current Score: {{ score }}</p>
 
-    <form class="review-form" @submit.prevent="onSubmit">
-      <h2>{{ num0 }} - {{ num1 }} = ?</h2>
+    <div class="box">
+      <h2 v-if="internalStateNum == 0">The equation will be displayed here. Press 'start' when ready.</h2>
+      <h2 v-else>{{ num0 }} - {{ num1 }} = ?</h2><br>
+      {{this.internalStateNum}}
+      
       <label for="input">Input your answer here:</label>
-      <input id="input" v-model="input" type="number" pattern="\d"><br>
+      <input :disabled="internalStateNum == 0" id="input" v-model="input" type="number" pattern="\d"><br>
 
-      <input class="button" type="submit" value="Submit">
+      <button :disabled="internalStateNum == 1" class="button" @click="startCalc()">Start</button>
+      <button :disabled="internalStateNum == 0" class="button" @click="onSubmit()">Submit</button>
+      <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
 
-    </form>
+    </div>
   </div>`,
+  props: {
+    debugMode: {
+      type: Boolean,
+      required: true
+    },
+  },
   data() {
     return {
       num0: 0,
       num1: 0,
       input: null,
-      score: 0
+      score: 0,
+      internalStateNum: 0,
+      sec : 0,
+      prevLen: 0,
+      timer: null,
     }
   },
   methods: {
+    startCalc(){
+      this.internalStateNum++
+      //startTimer
+      this.timer = setInterval(this.countDown, 1000)
+    },
+    countDown() {
+      this.sec--
+      if (this.sec == 0){
+        clearInterval(this.timer)
+        this.internalStateNum++
+        this.skip()
+      }
+    },
+    skip() {
+      //SKIP
+      this.$emit('skip')
+    },
     rngInt() {
       this.num0 = 1000 + Math.floor(Math.random() * 8999)
       this.num1 = 10 + Math.floor((Math.random()) * 89)
@@ -46,23 +79,23 @@ app.component('subtraction', {
         return
       }
 
-
-      /*let productReview = {
-        lorem: this.input,
-      }
-      this.$emit('review-submitted', productReview)*/
       this.rngInt()
       this.input = ""
       this.score++
 
       if (this.score == 7) {
-        alert("GO NEXT EVENT")
+        this.skip()
       }
-      //addScore, up til 5, and then move to next eventNumber
     }
   },
   beforeMount(){
     this.rngInt()
-    this.score = 0
+    this.score = 6
+    this.sec = 60
+  },
+  beforeUnmount(){
+    //might be redundant, but I don't care. Better worry than sorry.
+    clearInterval(this.rec)
+    clearInterval(this.timer)
   }
 })
