@@ -116,6 +116,7 @@ app.component('lorem-ipsum', {
       if (this.sec == 0){
         clearInterval(this.rec)
         clearInterval(this.timer)
+        this.internalStateNum++
         this.$emit('skip')
       }
     },
