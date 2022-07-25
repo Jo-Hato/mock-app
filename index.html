@@ -77,7 +77,7 @@
           if (event.acceleration.y != null)
             mountedApp.accels.y = parseFloat(event.acceleration.y.toFixed(PRECISION) + 0)
           if (event.acceleration.z != null)
-            mountedApp.accels.z = event.acceleration.z.toFixed(PRECISION) + 0
+            mountedApp.accels.z = parseFloat(event.acceleration.z.toFixed(PRECISION)) + 0
 
           if (event.rotationRate.alpha != null)
             mountedApp.gyros.x = event.rotationRate.alpha.toFixed(PRECISION)
