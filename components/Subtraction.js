@@ -15,7 +15,7 @@ app.component('subtraction', {
       <label for="input">Input your answer here:</label>
       <input :disabled="internalStateNum == 0" id="input" v-model="input" type="number" pattern="\d"><br>
 
-      <button :disabled="internalStateNum == 1" class="button" @click="startCalc()">Start</button>
+      <button v-if="internalStateNum == 0" class="button" @click="startCalc()">Start</button>
       <button :disabled="internalStateNum == 0" class="button" @click="onSubmit()">Submit</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
 
