@@ -80,11 +80,11 @@
             mountedApp.accels.z = parseFloat(event.acceleration.z.toFixed(PRECISION))
 
           if (event.rotationRate.alpha != null)
-            mountedApp.gyros.x = event.rotationRate.alpha.toFixed(PRECISION)
+            mountedApp.gyros.x = parseFloat(event.rotationRate.alpha.toFixed(PRECISION))
           if (event.rotationRate.beta != null)
-            mountedApp.gyros.y = event.rotationRate.beta.toFixed(PRECISION)
+            mountedApp.gyros.y = parseFloat(event.rotationRate.beta.toFixed(PRECISION))
           if (event.rotationRate.gamma != null)
-            mountedApp.gyros.z = event.rotationRate.gamma.toFixed(PRECISION)
+            mountedApp.gyros.z = parseFloat(event.rotationRate.gamma.toFixed(PRECISION))
         });
       };
 

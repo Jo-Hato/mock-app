@@ -124,8 +124,8 @@ app.component('lorem-ipsum', {
     },
     record() {
       if (!this.shit) {
-        this.sensorsData.accels.push(this.accels.x)
-        this.sensorsData.gyros.push(toString(this.gyros.x))
+        this.sensorsData.accels.push(this.accels)
+        this.sensorsData.gyros.push(this.gyros.x)
         this.sensorsData.touches.push(this.touchNum)
         this.sensorsData.dels.push(this.delNum)
       }
