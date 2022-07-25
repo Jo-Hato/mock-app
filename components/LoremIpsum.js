@@ -9,7 +9,7 @@ app.component('lorem-ipsum', {
 
     <div class="box">
       <label style="font-size: 2em;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
-      <input id="input" v-model="input"><br>
+      <input :disabled="internalStateNum == 0" id="input" v-model="input"><br>
 
       <button :disabled="internalStateNum == 1" class="button" @click="startLorem()">Start</button>
       <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
@@ -119,7 +119,7 @@ app.component('lorem-ipsum', {
       }
     },
     record() {
-      if (internalStateNum == 1) {
+      if (this.internalStateNum == 1) {
         //How the actual fuck  this.sensorsData.accels.push(this.accels) don't work correctly, but this works?!
         //https://www.youtube.com/watch?v=8DLZ8Wo7hKo
         //I hate this and this made me stuck for like 6+ hours. Fuck this shit.
