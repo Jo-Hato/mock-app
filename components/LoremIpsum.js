@@ -4,7 +4,7 @@ app.component('lorem-ipsum', {
   `<div>
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
-    <p v-show="(eventNum != 3)" style="color: red;">{{ sec }} second(s) left</p>
+    <p v-show="(eventNum != 3) && internalStateNum == 1" style="color: red;">{{ sec }} second(s) left</p>
     <p v-show="debugMode" style="color: red;">DEBUG: {{ sec }} second(s) left</p>
     <p>Current Score: {{ score }}</p>
 
@@ -136,7 +136,7 @@ app.component('lorem-ipsum', {
       }
     },
     skip() {
-      let sensorsData = {
+      this.sensorsData = {
         "started": Date.now(),
         "accels": [{x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}, {x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}, {x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}],
         "gyros": [{x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}, {x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}, {x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}],

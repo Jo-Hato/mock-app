@@ -4,13 +4,12 @@ app.component('subtraction', {
   `<div>
     <h1>Math Excercise</h1>
     <p>Please enter the answer below.</p>
-    <p style="color: red;">{{ sec }} second(s) left</p>
+    <p style="color: red;" v-show="internalStateNum == 1">{{ sec }} second(s) left</p>
     <p>Current Score: {{ score }}</p>
 
     <div class="box">
       <h2 v-if="internalStateNum == 0">The equation will be displayed here. Press 'start' when ready.</h2>
       <h2 v-else>{{ num0 }} - {{ num1 }} = ?</h2><br>
-      {{this.internalStateNum}}
       
       <label for="input">Input your answer here:</label>
       <input :disabled="internalStateNum == 0" id="input" v-model="input" type="number" pattern="\d"><br>

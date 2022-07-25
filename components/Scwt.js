@@ -1,21 +1,30 @@
 app.component('scwt', {
   template:
   /*html*/
-  `<h1>SCWT Excercise</h1>
-  <p>Please choose the <u>{{ writtenOrFont[rng] }} color</u>.</p>
-  <p>Current Score: {{ score }}</p>
+  `<div>
+    <h1>SCWT Excercise</h1>
+    <p v-if="internalStateNum == 0">Please choose the <u>the color of the font/written-word</u> above the colored boxes.<br> Press 'Start' when ready.</p><br>
+    <p style="color: red;" v-show="internalStateNum == 1">{{ sec }} second(s) left</p>
+    <p>Current Score: {{ score }}/30</p>
 
-  <form class="review-form">
-
-    <h2 style="text-shadow: 0 0 3px #FFFFFF, 0 0 5px #000000;" :class="word.class[word.color]">
-      {{ word.written }}
-    </h2>
-
-    <div>
-      <input v-model="picked" @click="onSubmit(color)" v-for="(color, index) in colors" :class="color" type="radio" :id="index" :value="color"/>
+    <div class="box">
+      <p v-if="internalStateNum == 1">Please choose the <u>{{ writtenOrFont[rng] }} color</u>.</p><br>
+      <h2 style="text-shadow: 0 0 3px #FFFFFF, 0 0 5px #000000;" :class="word.class[word.color]">
+        {{ word.written }}
+      </h2>
+      <div>
+        <input v-model="picked" @click="onSubmit(color)" v-for="(color, index) in colors" :class="color" type="radio" :id="index" :value="color"/>
+      </div>
+      <button v-if="internalStateNum == 0" class="button" @click="startScwt()">Start</button>
+      <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
     </div>
-
-  </form>`,
+  </div>`,
+  props: {
+    debugMode: {
+      type: Boolean,
+      required: true
+    },
+  },
   data() {
     return {
       colors: ["red", "green", "blue", "black", "yellow"],
@@ -23,39 +32,68 @@ app.component('scwt', {
       score: 0,
       picked: null,
       writtenOrFont: ["written", "font"],
-      rng: null
+      rng: null,
+      internalStateNum: 0,
+      sec: 0,
+      timer: null,
     }
   },
   methods: {
+    startScwt(){
+      this.rngWord()
+      this.internalStateNum++
+      //startTimer
+      this.timer = setInterval(this.countDown, 1000)
+    },
+    countDown() {
+      this.sec--
+      if (this.sec == 0){
+        clearInterval(this.timer)
+        this.internalStateNum++
+        this.skip()
+      }
+    },
     rngWord(){
         this.word.written = this.colors[Math.floor(Math.random() * 5)]
         this.word.color = Math.floor(Math.random() * 5)
         this.rng = Math.floor(Math.random() * 2)
     },
     onSubmit(color) {
-      if (this.rng == 1) {
-        if (color == this.colors[this.word.color]) {
+      if (this.word.written == this.word.color) {
+        if (color == this.colors[this.word.written] || color == this.colors[this.word.color]) {
           this.score++
         } else {
           this.score--
         }
       } else {
-        if (color != this.colors[this.word.color]) {
-          this.score++
+        if (this.rng == 1) {
+          if (color == this.colors[this.word.color]) {
+            this.score++
+          } else {
+            this.score--
+          }
         } else {
-          this.score--
+          if (color != this.colors[this.word.color]) {
+            this.score++
+          } else {
+            this.score--
+          }
         }
       }
 
-      if (this.score == 5) {
-        alert("GO NEXT EVENT")
+      if (this.score == 30) {
+        this.skip()
       }
       this.rngWord()
+    },
+    skip() {
+      this.$emit('skip')
     }
   },
   beforeMount(){
     this.rngWord()
     this.score = 0
+    this.sec = 60
     this.picked = null
   }
 })
