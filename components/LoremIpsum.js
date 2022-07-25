@@ -116,7 +116,6 @@ app.component('lorem-ipsum', {
       if (this.sec == 0){
         clearInterval(this.rec)
         clearInterval(this.timer)
-        this.$emit('sensors-data-submitted', this.sensorsData)
       }
     },
     record() {
@@ -139,6 +138,9 @@ app.component('lorem-ipsum', {
   beforeMount(){
     this.rngText(this.input)
     this.score = 0
-    this.sec = 30
+    this.sec = 3
   },
+  beforeUnmount(){
+    this.$emit('sensors-data-submitted', this.sensorsData)
+  }
 })
