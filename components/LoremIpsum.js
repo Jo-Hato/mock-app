@@ -116,13 +116,16 @@ app.component('lorem-ipsum', {
       if (this.sec == 0){
         clearInterval(this.rec)
         clearInterval(this.timer)
+        this.$emit('skip')
       }
     },
     record() {
-      this.sensorsData.accels.push(this.accels)
-      this.sensorsData.gyros.push(this.gyros)
-      this.sensorsData.touches.push(this.touchNum)
-      this.sensorsData.dels.push(this.delNum)
+      if (this.internalStateNum == 1) {
+        this.sensorsData.accels.push(this.accels)
+        this.sensorsData.gyros.push(this.gyros)
+        this.sensorsData.touches.push(this.touchNum)
+        this.sensorsData.dels.push(this.delNum)
+      }
     },
     skip() {
       let sensorsData = {
