@@ -4,7 +4,7 @@ app.component('lorem-ipsum', {
   `<div>
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
-    <p v-show="isStress || debugMode" style="color: red;">{{ time }} second(s) left</p>
+    <p v-show="isStress || debugMode" style="color: red;">{{ sec }} second(s) left</p>
     <p>Current Score: {{ score }}</p>
 
     <div class="box">
@@ -62,8 +62,8 @@ app.component('lorem-ipsum', {
         "dels": []
       },
       prevLen: 0,
-      time: 0,
-      doge: null
+      rec: null,
+      timer: null
     }
   },
   watch: {
@@ -104,35 +104,41 @@ app.component('lorem-ipsum', {
     },
     startLorem(){
       this.internalStateNum++
-      this.sensorsData.started = Date.now()
       //Start recording motions
+      this.rec = setInterval(this.record, 50)
+      this.sensorsData.started = Date.now()
 
       //startTimer
-
+      this.timer = setInterval(this.countDown, 1000)
+    },
+    countDown() {
+      this.sec--
+      if (this.sec == 0){
+        clearInterval(this.rec)
+        clearInterval(this.timer)
+        this.$emit('sensors-data-submitted', this.sensorsData)
+      }
+    },
+    record() {
+      this.sensorsData.accels.push(this.accels)
+      this.sensorsData.gyros.push(this.gyros)
+      this.sensorsData.touches.push(this.touchNum)
+      this.sensorsData.dels.push(this.delNum)
     },
     skip() {
-      /*let sensorsData = {
+      let sensorsData = {
         "started": Date.now(),
         "accels": [{x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}, {x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}, {x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}],
         "gyros": [{x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}, {x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}, {x: 0, y: 0, z: 0}, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2}],
         "touches": [0, 2, 5, 8, 9, 11],
         "dels": [1, 4, 12, 12, 15, 20]
-      }*/
+      }
       this.$emit('sensors-data-submitted', this.sensorsData)
     },
   },
   beforeMount(){
     this.rngText(this.input)
     this.score = 0
-    this.time = 5
+    this.sec = 30
   },
-  onMounted() {
-    this.doge = setInterval(() => {
-      this.sensorsData.started = Date.now()
-      this.$emit('sensors-data-submitted', this.sensorsData)
-    }, 1000)
-  },
-  beforeUnmount(){
-    clearInterval(this.doge)
-  }
 })
