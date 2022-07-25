@@ -13,7 +13,7 @@ app.component('scwt', {
         {{ word.written }}
       </h2>
       <div>
-        <input v-model="picked" @click="onSubmit(color)" v-for="(color, index) in colors" :class="color" type="radio" :id="index" :value="color"/>
+        <input :disabled="internalStateNum == 0" v-model="picked" @click="onSubmit(color)" v-for="(color, index) in colors" :class="color" type="radio" :id="index" :value="color"/>
       </div>
       <button v-if="internalStateNum == 0" class="button" @click="startScwt()">Start</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
@@ -59,20 +59,22 @@ app.component('scwt', {
         this.rng = Math.floor(Math.random() * 2)
     },
     onSubmit(color) {
-      if (this.word.written == this.word.color) {
+      //console.log("COLOR ", color)
+      //console.log(this.word)
+      if (this.word.written == this.colors[this.word.color]) {
         if (color == this.colors[this.word.written] || color == this.colors[this.word.color]) {
           this.score++
         } else {
           this.score--
         }
       } else {
-        if (this.rng == 1) {
+        if (this.rng == 1) { //Font color
           if (color == this.colors[this.word.color]) {
             this.score++
           } else {
             this.score--
           }
-        } else {
+        } else { //Written color
           if (color != this.colors[this.word.color]) {
             this.score++
           } else {
@@ -93,7 +95,7 @@ app.component('scwt', {
   beforeMount(){
     this.rngWord()
     this.score = 0
-    this.sec = 60
+    this.sec = 9999
     this.picked = null
   }
 })
