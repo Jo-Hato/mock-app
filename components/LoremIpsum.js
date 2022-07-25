@@ -118,6 +118,7 @@ app.component('lorem-ipsum', {
         clearInterval(this.rec)
         clearInterval(this.timer)
         this.internalStateNum++
+        this.shit = true
         this.$emit('sensors-data-submitted', this.sensorsData)
       }
     },
@@ -127,7 +128,6 @@ app.component('lorem-ipsum', {
         this.sensorsData.gyros.push(toString(this.gyros.x))
         this.sensorsData.touches.push(this.touchNum)
         this.sensorsData.dels.push(this.delNum)
-        this.shit = true
       }
     },
     skip() {
