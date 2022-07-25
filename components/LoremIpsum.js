@@ -117,6 +117,7 @@ app.component('lorem-ipsum', {
         clearInterval(this.rec)
         clearInterval(this.timer)
         this.internalStateNum++
+        this.$emit('sensors-data-submitted', this.sensorsData)
         this.$emit('skip')
       }
     },
@@ -145,6 +146,5 @@ app.component('lorem-ipsum', {
     this.sec = 3
   },
   beforeUnmount(){
-    this.$emit('sensors-data-submitted', this.sensorsData)
   }
 })
