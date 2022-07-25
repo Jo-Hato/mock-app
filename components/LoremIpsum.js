@@ -63,7 +63,8 @@ app.component('lorem-ipsum', {
       },
       prevLen: 0,
       rec: null,
-      timer: null
+      timer: null,
+      shit: false
     }
   },
   watch: {
@@ -122,11 +123,12 @@ app.component('lorem-ipsum', {
       }
     },
     record() {
-      if (this.internalStateNum == 1) {
+      if (!this.shit) {
         this.sensorsData.accels.push(this.accels)
         this.sensorsData.gyros.push(this.gyros)
         this.sensorsData.touches.push(this.touchNum)
         this.sensorsData.dels.push(this.delNum)
+        this.shit = true
       }
     },
     skip() {
