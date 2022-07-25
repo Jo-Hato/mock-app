@@ -38,7 +38,7 @@ app.component('ground-survey', {
         <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
       </select>
 
-      <button class="button" @click="submitForm()">Submit</button>
+      <button class="button" :disabled="this.tired === null || this.happy === null || this.stress === null || this.energy === null || this.angry === null || this.interested === null" @click="submitForm()">Submit</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
     </div>
   </div>`,
@@ -63,11 +63,6 @@ app.component('ground-survey', {
       this.$emit('touch')
     },
     submitForm() {
-      if (this.tired === null || this.happy === null || this.stress === null || this.energy === null || this.angry === null || this.interested === null) {
-        alert('Review is incomplete. Please fill out every field.')
-        return
-      }
-
       let truthForm = {
         tired: this.tired,
         happy: this.happy,

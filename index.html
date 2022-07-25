@@ -24,6 +24,8 @@
       <next-screen v-else-if="eventNum === 4" @skip="skip"></next-screen>
       <subtraction v-else-if="eventNum === 5" :debug-mode="debugMode" @skip="skip"></subtraction>
       <next-screen v-else-if="eventNum === 6" @skip="skip"></next-screen>
+      <scwt v-else-if="eventNum === 7" :debug-mode="debugMode" @skip="skip"></scwt>
+      <next-screen v-else-if="eventNum === 8" @skip="skip"></next-screen>
       
 
       <!--

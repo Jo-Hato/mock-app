@@ -18,7 +18,7 @@ app.component('initial-form', {
           <option>Female</option>
         </select><br> 
     
-        <button class="button" @click="submitForm()">Submit</button>
+        <button class="button" @click="submitForm()" :disabled="this.name === '' || this.age === null || this.gender === null">Submit</button>
         <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
       </div>
     </div>`,
@@ -60,10 +60,6 @@ app.component('initial-form', {
         this.$emit('touch')
       },
       submitForm() {
-        if (this.name === '' || this.age === null || this.gender === null) {
-          alert('Info is incomplete. Please fill out every field.')
-          return
-        }
         let initialForm = {
           id: Date.now(),
           name: this.name,

@@ -90,7 +90,7 @@ app.component('subtraction', {
   },
   beforeMount(){
     this.rngInt()
-    this.score = 6
+    this.score = 0
     this.sec = 60
   },
   beforeUnmount(){

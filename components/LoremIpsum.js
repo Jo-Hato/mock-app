@@ -148,7 +148,7 @@ app.component('lorem-ipsum', {
   },
   beforeMount(){
     this.rngText(this.input)
-    this.score = 4
+    this.score = 0
     this.sec = 60
   },
   beforeUnmount(){
