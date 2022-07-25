@@ -73,11 +73,11 @@
         }
         window.addEventListener("devicemotion", function(event) {
           if (event.acceleration.x != null)
-            mountedApp.accels.x = event.acceleration.x.toFixed(PRECISION)
+            mountedApp.accels.x = parseFloat(event.acceleration.x.toFixed(PRECISION))
           if (event.acceleration.y != null)
-            mountedApp.accels.y = event.acceleration.y.toFixed(PRECISION)
+            mountedApp.accels.y = parseFloat(event.acceleration.y.toFixed(PRECISION))
           if (event.acceleration.z != null)
-            mountedApp.accels.z = event.acceleration.z.toFixed(PRECISION)
+            mountedApp.accels.z = parseFloat(event.acceleration.z.toFixed(PRECISION))
 
           if (event.rotationRate.alpha != null)
             mountedApp.gyros.x = event.rotationRate.alpha.toFixed(PRECISION)
