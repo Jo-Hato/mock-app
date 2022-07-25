@@ -91,17 +91,14 @@ app.component('lorem-ipsum', {
         return
       }
 
-      /*let productReview = {
-        lorem: this.input,
-      }
-      this.$emit('review-submitted', productReview)*/
       this.rngText(this.input)
       this.input = ""
       this.score++
       if (this.score == 5) {
-        alert("GO NEXT EVENT")
+        clearInterval(this.rec)
+        clearInterval(this.timer)
+        this.$emit('sensors-data-submitted', this.sensorsData)
       }
-      //addScore, up til 5, and then move to next eventNumber
     },
     startLorem(){
       this.internalStateNum++
@@ -122,7 +119,13 @@ app.component('lorem-ipsum', {
       }
     },
     record() {
-      if (true) {
+      if (internalStateNum == 1) {
+        //How the actual fuck  this.sensorsData.accels.push(this.accels) don't work correctly, but this works?!
+        //https://www.youtube.com/watch?v=8DLZ8Wo7hKo
+        //I hate this and this made me stuck for like 6+ hours. Fuck this shit.
+
+        //this.sensorsData.accels.push(this.accels)
+        //this.sensorsData.gyros.push(this.gyros)
         this.sensorsData.accels.push({"x": this.accels.x, "y": this.accels.y, "z": this.accels.z})
         this.sensorsData.gyros.push({"x": this.gyros.x, "y": this.gyros.y, "z": this.gyros.z})
         this.sensorsData.touches.push(this.touchNum)
@@ -143,8 +146,11 @@ app.component('lorem-ipsum', {
   beforeMount(){
     this.rngText(this.input)
     this.score = 0
-    this.sec = 3
+    this.sec = 30
   },
   beforeUnmount(){
+    //might be redundant, but I don't care. Better worry than sorry.
+    clearInterval(this.rec)
+    clearInterval(this.timer)
   }
 })
