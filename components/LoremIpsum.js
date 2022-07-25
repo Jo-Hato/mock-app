@@ -4,7 +4,8 @@ app.component('lorem-ipsum', {
   `<div>
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
-    <p v-show="isStress || debugMode" style="color: red;">{{ sec }} second(s) left</p>
+    <p v-show="(eventNum != 3)" style="color: red;">{{ sec }} second(s) left</p>
+    <p v-show="debugMode" style="color: red;">DEBUG: {{ sec }} second(s) left</p>
     <p>Current Score: {{ score }}</p>
 
     <div class="box">
@@ -38,12 +39,15 @@ app.component('lorem-ipsum', {
     delNum: {
       type: Number,
       required: true
+    },
+    eventNum: {
+      type: Number,
+      required: true
     }
   },
   data() {
     return {
       internalStateNum : 0,
-      isStress : true,
       sec : 0,
       texts: [
         "lorem ipsum dolor sit amet",

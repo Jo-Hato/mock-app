@@ -22,7 +22,7 @@
       <ground-survey v-else-if="eventNum === 2" @ground-truth-submitted="addGroundTruth" @touch="updateTouch" :debug-mode="debugMode"></ground-survey>
       <lorem-ipsum v-else-if="eventNum === 3" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum"></lorem-ipsum>
       <next-screen v-else-if="eventNum === 4" @skip="skip"></next-screen>
-      <lorem-ipsum v-else-if="eventNum === 5" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum"></lorem-ipsum>
+      <lorem-ipsum v-else-if="eventNum === 5" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum" :event-num="eventNum"></lorem-ipsum>
 
       <!--
         <lorem-ipsum></lorem-ipsum><br>
