@@ -6,7 +6,7 @@ app.component('end-screen', {
         <p>Thank you for your participation! :D</p><br>
 
         <p>{{ message }}</p>
-        <button class="button" @click="sendMessage(JSON.stringify(runData))">Send Data</button>
+        <button class="button" @click="sendMessage(runData)">Send Data</button>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <p>{{ runData }}</p>
     </div>`,
@@ -51,7 +51,7 @@ app.component('end-screen', {
             this.webSocket.send(message);
         }
     },
-    Mounted(){
+    beforeMount(){
         this.created()
     }
 })
