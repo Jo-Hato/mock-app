@@ -5,6 +5,7 @@ app.component('end-screen', {
         <h1>The End of Data Collection</h1>
         <p>Thank you for your participation! :D</p><br>
 
+        <p>{{ message }}</p>
         <button class="button" @click="sendMessage(JSON.stringify(runData))">Send Data</button>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <p>{{ runData }}</p>
@@ -17,7 +18,8 @@ app.component('end-screen', {
     },
     data() {
       return {
-        webSocket: null
+        webSocket: null,
+        message: ""
       }
     },
     methods: {
@@ -27,16 +29,21 @@ app.component('end-screen', {
         
             this.webSocket.onmessage = function(event) {
                 console.log(event);
+                this.message += event
             }
         
             this.webSocket.onopen = function(event) {
                 console.log(event);
-                console.log("Successfully connected to the gmc websocket server...");
+                this.message += event
+                console.log("Successfully connected to the gmc websocket server...")
+                this.message += "Successfully connected to the gmc websocket server..."
             }
 
             this.webSocket.onclose = function(event){
-                console.log(event);
-                console.log("Server Disconnected...");
+                console.log(event)
+                this.message += event
+                console.log("Server Disconnected...")
+                this.message += "Server Disconnected..."
             };
         },
         sendMessage(message) {
