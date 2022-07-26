@@ -5,17 +5,17 @@ app.component('lorem-ipsum', {
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
     <h2 v-show="(eventNum != 3) && internalStateNum == 1" style="color: red;">{{ sec }} second(s) left</h2>
-    <p v-show="debugMode" style="color: red;">DEBUG: {{ sec }} second(s) left</p>
+    <p v-show="debugMode" style="color: fuchsia;">DEBUG: {{ sec }} second(s) left</p>
     <p>Current Score: {{ score }}</p>
 
     <div class="box">
-      <label style="font-size: 2em;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
+      <label style="font-size: 2em; color: white;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
       <p v-show="typo" style="color: red;">You have typo(s)! Please correct your answer!</p>
       <input :disabled="internalStateNum == 0" id="input" v-model="input"><br>
 
       <button v-if="internalStateNum == 0" class="button" @click="startLorem()">Start</button>
       <button :disabled="internalStateNum == 0 || input == ''" class="button" @click="submitForm()">Submit</button>
-      <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
+      <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia;">Force Next</button>
     </div>
   </div>`,
   props: {

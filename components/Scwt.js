@@ -4,11 +4,12 @@ app.component('scwt', {
   `<div>
     <h1>SCWT Excercise</h1>
     <p v-if="internalStateNum == 0">Please choose the <u>the color of the font/written-word</u> above the colored boxes.<br> Press 'Start' when ready.</p><br>
-    <h2 style="color: red;" v-show="internalStateNum == 1">{{ sec }} second(s) left</h2>
+    <h2 style="color: red;" v-if="internalStateNum == 1">{{ sec }} second(s) left</h2>
     <p>Current Score: {{ score }}/30</p>
 
     <div class="box">
-      <p v-if="internalStateNum == 1">Please choose the <u>{{ writtenOrFont[rng] }} color</u>.</p><br>
+      <p v-if="internalStateNum == 0" style="color: white;">Please choose the <u>written/font color</u>.</p>
+      <p v-if="internalStateNum == 1" style="color: white;">Please choose the <u>{{ writtenOrFont[rng] }} color</u>.</p><br>
       <h2 style="text-shadow: 0 0 3px #FFFFFF, 0 0 5px #000000;" :class="word.class[word.color]">
         {{ word.written }}
       </h2>
@@ -16,7 +17,7 @@ app.component('scwt', {
         <input :disabled="internalStateNum == 0" v-model="picked" @click="onSubmit(color)" v-for="(color, index) in colors" :class="color" type="radio" :id="index" :value="color"/>
       </div>
       <button v-if="internalStateNum == 0" class="button" @click="startScwt()">Start</button>
-      <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
+      <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia">Force Next</button>
     </div>
   </div>`,
   props: {

@@ -19,7 +19,7 @@ app.component('initial-form', {
         </select><br> 
     
         <button class="button" @click="submitForm()" :disabled="this.name === '' || this.age === null || this.gender === null">Submit</button>
-        <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
+        <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia">Force Next</button>
       </div>
     </div>`,
     props: {

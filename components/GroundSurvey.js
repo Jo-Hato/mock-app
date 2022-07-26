@@ -39,7 +39,7 @@ app.component('ground-survey', {
       </select>
 
       <button class="button" :disabled="this.tired === null || this.happy === null || this.stress === null || this.energy === null || this.angry === null || this.interested === null" @click="submitForm()">Submit</button>
-      <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
+      <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia">Force Next</button>
     </div>
   </div>`,
   props: {
