@@ -45,6 +45,6 @@ app.component('end-screen', {
         }
     },
     Mounted(){
-        //this.created()
+        this.created()
     }
 })
