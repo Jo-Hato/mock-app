@@ -36,9 +36,14 @@ app.component('subtraction', {
       sec : 0,
       prevLen: 0,
       timer: null,
+      audio: new Audio('./assets/error.wav')
     }
   },
   methods: {
+    playSoundError() {
+      this.audio.loop = false;
+      this.audio.play(); 
+    },
     startCalc(){
       this.internalStateNum++
       //startTimer
@@ -71,7 +76,7 @@ app.component('subtraction', {
     },
     onSubmit() {
       if (this.input != (this.num0 - this.num1)) {
-        console.log("*!!!Anoyying beep*")
+        this.playSoundError()
         this.score--
         this.rngInt()
         this.input = ""
