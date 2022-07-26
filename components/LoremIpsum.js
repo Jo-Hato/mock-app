@@ -68,7 +68,7 @@ app.component('lorem-ipsum', {
       prevLen: 0,
       rec: null,
       timer: null,
-      audioTimer: new Audio('./assets/tick.mp3')
+      audioTimer: new Audio('./assets/timer.wav')
     }
   },
   watch: {
@@ -109,8 +109,6 @@ app.component('lorem-ipsum', {
     },
     startLorem(){
       if(this.eventNum != 3){
-        this.audioTimer.loop = true
-        this.audioTimer.load()
         this.playSoundTimer()
       }
       this.internalStateNum++
@@ -159,6 +157,8 @@ app.component('lorem-ipsum', {
     this.rngText(this.input)
     this.score = 0
     this.sec = 60
+    this.audioTimer.loop = true
+    this.audioTimer.load()
   },
   beforeUnmount(){
     //might be redundant, but I don't care. Better worry than sorry.
