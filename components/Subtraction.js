@@ -59,6 +59,7 @@ app.component('subtraction', {
     },
     skip() {
       //SKIP
+      clearInterval(this.timer)
       this.$emit('skip')
     },
     rngInt() {
@@ -100,7 +101,6 @@ app.component('subtraction', {
   },
   beforeUnmount(){
     //might be redundant, but I don't care. Better worry than sorry.
-    clearInterval(this.rec)
     clearInterval(this.timer)
   }
 })

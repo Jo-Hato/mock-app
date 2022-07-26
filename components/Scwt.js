@@ -17,7 +17,7 @@ app.component('scwt', {
         <input :disabled="internalStateNum == 0" v-model="picked" @click="onSubmit(color)" v-for="(color, index) in colors" :class="color" type="radio" :id="index" :value="color"/>
       </div>
       <button v-if="internalStateNum == 0" class="button" @click="startScwt()">Start</button>
-      <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia">Force Next</button>
+      <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia;">Force Next</button>
     </div>
   </div>`,
   props: {
@@ -90,6 +90,7 @@ app.component('scwt', {
       this.rngWord()
     },
     skip() {
+      clearInterval(this.timer)
       this.$emit('skip')
     }
   },
