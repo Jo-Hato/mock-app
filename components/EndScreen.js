@@ -5,7 +5,7 @@ app.component('end-screen', {
         <h1>The End of Data Collection</h1>
         <p>Thank you for your participation! :D</p><br>
 
-        <!-- <button class="button" @click="sendMessage(JSON.stringify(runData))">Send Data</button> -->
+        <button class="button" @click="sendMessage(JSON.stringify(runData))">Send Data</button>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <p>{{ runData }}</p>
     </div>`,
