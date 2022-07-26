@@ -15,7 +15,8 @@
       <div v-if="eventNum === 0">
         <initial-setup :accels="accels" :gyros="gyros" :debug-mode="debugMode"></initial-setup>
         <button style="font-size: 2rem; margin: 3rem 0 0 1rem;" id="start_demo" href="#" role="button">Allow Sensor Use</button><br>
-        <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button><br>
+        <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button><br><br>
+        <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem; color: fuchsia;" v-if="!debugMode" @click="activateDebugMode">Activate Debug Mode</button>
         <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem; color: fuchsia;" v-if="debugMode" @click="eventNum++">Force Next</button>
       </div>
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" @touch="updateTouch" @del-key="updateDel" :debug-mode="debugMode"></initial-form>
@@ -36,7 +37,7 @@
         <subtraction></subtraction><br>
         <scwt></scwt><br>
       -->
-      <div v-if="debugMode" style="color: fuchsia;">
+      <div v-show="debugMode" style="color: fuchsia;">
         
         <ul>Debugger:
           <li>eventNum = {{ eventNum }}</li>

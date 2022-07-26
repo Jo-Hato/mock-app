@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            debugMode: true,
+            debugMode: false,
             eventNum: 0,
             FREQ: 20,
 
@@ -24,6 +24,9 @@ const app = Vue.createApp({
             //IDK what the heck this does, but it makes touch/del detection work on mobile devices...
             //https://stackoverflow.com/questions/50617865/vue-v-model-input-change-mobile-chrome-not-work
         },*/
+        activateDebugMode(){
+            this.debugMode = true
+        },
         addInitialForm(initialForm) {
             this.runData["subjectInfo"] = initialForm
             this.eventNum++
