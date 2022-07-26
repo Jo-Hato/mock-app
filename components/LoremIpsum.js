@@ -136,7 +136,7 @@ app.component('lorem-ipsum', {
     },
     record() {
       if (this.internalStateNum == 1) {
-        //How the actual fuck  this.sensorsData.accels.push(this.accels) don't work correctly, but this works?!
+        //How the actual fuck this.sensorsData.accels.push(this.accels) don't work correctly, but this works?!
         //https://www.youtube.com/watch?v=8DLZ8Wo7hKo
         //I hate this and this made me stuck for like 6+ hours. Fuck this shit.
 

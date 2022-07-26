@@ -30,15 +30,10 @@
       <lorem-ipsum v-else-if="eventNum === 9" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum" :event-num="eventNum"></lorem-ipsum>
       <next-screen v-else-if="eventNum === 10" @skip="skip"></next-screen>
       <ground-survey v-else-if="eventNum === 11" @ground-truth-submitted="addGroundTruth" @touch="updateTouch" :debug-mode="debugMode"></ground-survey>
-      <div v-else-if="eventNum === 12"><h1>The End of Data Collection</h1><br> <p>Thank you for your participation!</p></div>
+      <end-screen v-else-if="eventNum === 12" :run-data="runData"></end-screen>
 
-      <!--
-        <lorem-ipsum v-else-if="eventNum === 5" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum" :event-num="eventNum"></lorem-ipsum>
-        <subtraction></subtraction><br>
-        <scwt></scwt><br>
-      -->
-      <div v-show="debugMode" style="color: fuchsia;">
-        
+
+      <div v-show="debugMode" style="color: fuchsia;">        
         <ul>Debugger:
           <li>eventNum = {{ eventNum }}</li>
           <li>touchNum: {{ touchNum }} <div id="display-area1"></div></li>
@@ -66,6 +61,7 @@
     <script src="./components/Subtraction.js"></script>
     <script src="./components/Scwt.js"></script>
     <script src="./components/NextScreen.js"></script>
+    <script src="./components/EndScreen.js"></script>
 
     <!-- Mount App -->
     <script>
