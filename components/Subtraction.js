@@ -16,7 +16,7 @@ app.component('subtraction', {
 
       <button v-if="internalStateNum == 0" class="button" @click="startCalc()">Start</button>
       <button :disabled="internalStateNum == 0 || input === ''" class="button" @click="onSubmit()">Submit</button>
-      <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia">Force Next</button>
+      <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia;">Force Next</button>
 
     </div>
   </div>`,
@@ -95,7 +95,7 @@ app.component('subtraction', {
   beforeMount(){
     this.rngInt()
     this.score = 0
-    this.sec = 90
+    this.sec = 60
     this.input = ""
   },
   beforeUnmount(){
