@@ -41,8 +41,8 @@ app.component('subtraction', {
   },
   methods: {
     playSoundError() {
-      this.audio.loop = false;
-      this.audio.play(); 
+      this.audio.loop = false
+      this.audio.play()
     },
     startCalc(){
       this.internalStateNum++

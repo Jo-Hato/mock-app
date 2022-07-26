@@ -68,6 +68,7 @@ app.component('lorem-ipsum', {
       prevLen: 0,
       rec: null,
       timer: null,
+      audioTimer: new Audio('./assets/tick.mp3')
     }
   },
   watch: {
@@ -80,6 +81,9 @@ app.component('lorem-ipsum', {
     }
   },
   methods: {
+    playSoundTimer() {
+      this.audioTimer.play()
+    },
     rngText(str){
       oldStr = str
       newStr = this.texts[Math.floor(Math.random() * 5)]
@@ -104,6 +108,11 @@ app.component('lorem-ipsum', {
       }
     },
     startLorem(){
+      if(this.eventNum != 3){
+        this.audioTimer.loop = true
+        this.audioTimer.load()
+        this.playSoundTimer()
+      }
       this.internalStateNum++
       //Start recording motions
       this.rec = setInterval(this.record, 50)
