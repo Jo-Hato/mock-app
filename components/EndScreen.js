@@ -44,7 +44,7 @@ app.component('end-screen', {
             this.webSocket.send(message);
         }
     },
-    beforeMount(){
+    Mounted(){
         //this.created()
     }
 })
