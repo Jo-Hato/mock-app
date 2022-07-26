@@ -25,7 +25,7 @@ app.component('end-screen', {
     methods: {
         created() {
             console.log("Starting webSocket to WebSocket Server")
-            this.webSocket = new WebSocket("wss://172.24.55.112:8080")
+            this.webSocket = new WebSocket("wss://gmc.cps.akita-pu.ac.jp:8080")
         
             this.webSocket.onmessage = function(event) {
                 console.log(event);
