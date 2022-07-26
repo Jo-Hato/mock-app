@@ -4,7 +4,7 @@ app.component('scwt', {
   `<div>
     <h1>SCWT Excercise</h1>
     <p v-if="internalStateNum == 0">Please choose the <u>the color of the font/written-word</u> above the colored boxes.<br> Press 'Start' when ready.</p><br>
-    <p style="color: red;" v-show="internalStateNum == 1">{{ sec }} second(s) left</p>
+    <h2 style="color: red;" v-show="internalStateNum == 1">{{ sec }} second(s) left</h2>
     <p>Current Score: {{ score }}/30</p>
 
     <div class="box">

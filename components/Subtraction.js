@@ -4,7 +4,7 @@ app.component('subtraction', {
   `<div>
     <h1>Math Excercise</h1>
     <p>Please enter the answer below.</p>
-    <p style="color: red;" v-show="internalStateNum == 1">{{ sec }} second(s) left</p>
+    <h2 style="color: red;" v-show="internalStateNum == 1">{{ sec }} second(s) left</h2>
     <p>Current Score: {{ score }}</p>
 
     <div class="box">
@@ -15,7 +15,7 @@ app.component('subtraction', {
       <input :disabled="internalStateNum == 0" id="input" v-model="input" type="number" pattern="\d"><br>
 
       <button v-if="internalStateNum == 0" class="button" @click="startCalc()">Start</button>
-      <button :disabled="internalStateNum == 0" class="button" @click="onSubmit()">Submit</button>
+      <button :disabled="internalStateNum == 0 || input === ''" class="button" @click="onSubmit()">Submit</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
 
     </div>
@@ -96,6 +96,7 @@ app.component('subtraction', {
     this.rngInt()
     this.score = 0
     this.sec = 60
+    this.input = ""
   },
   beforeUnmount(){
     //might be redundant, but I don't care. Better worry than sorry.

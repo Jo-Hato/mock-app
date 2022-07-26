@@ -29,7 +29,7 @@
       <lorem-ipsum v-else-if="eventNum === 9" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum" :event-num="eventNum"></lorem-ipsum>
       <next-screen v-else-if="eventNum === 10" @skip="skip"></next-screen>
       <ground-survey v-else-if="eventNum === 11" @ground-truth-submitted="addGroundTruth" @touch="updateTouch" :debug-mode="debugMode"></ground-survey>
-      <div v-else-if="eventNum === 12"><h1>The End of Data Collection</h1><br> Thank you for your participation!</div>
+      <div v-else-if="eventNum === 12"><h1>The End of Data Collection</h1><br> <p>Thank you for your participation!</p></div>
 
       <!--
         <lorem-ipsum v-else-if="eventNum === 5" @sensors-data-submitted="addSensorsData" @touch="updateTouch" @del-key="updateDel" @skip="skip" :debug-mode="debugMode" :accels="accels" :gyros="gyros" :touch-num="touchNum" :del-num="delNum" :event-num="eventNum"></lorem-ipsum>

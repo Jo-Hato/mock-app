@@ -4,16 +4,17 @@ app.component('lorem-ipsum', {
   `<div>
     <h1>Texting Excercise</h1>
     <p>Please write the text below.</p>
-    <p v-show="(eventNum != 3) && internalStateNum == 1" style="color: red;">{{ sec }} second(s) left</p>
+    <h2 v-show="(eventNum != 3) && internalStateNum == 1" style="color: red;">{{ sec }} second(s) left</h2>
     <p v-show="debugMode" style="color: red;">DEBUG: {{ sec }} second(s) left</p>
     <p>Current Score: {{ score }}</p>
 
     <div class="box">
       <label style="font-size: 2em;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
+      <p v-show="typo" style="color: red;">You have typo(s)! Please correct your answer!</p>
       <input :disabled="internalStateNum == 0" id="input" v-model="input"><br>
 
       <button v-if="internalStateNum == 0" class="button" @click="startLorem()">Start</button>
-      <button :disabled="internalStateNum == 0" class="button" @click="submitForm()">Submit</button>
+      <button :disabled="internalStateNum == 0 || input == ''" class="button" @click="submitForm()">Submit</button>
       <button class="button" v-if="debugMode" @click="skip()">Force Next</button>
     </div>
   </div>`,
@@ -68,7 +69,8 @@ app.component('lorem-ipsum', {
       prevLen: 0,
       rec: null,
       timer: null,
-      audioTimer: new Audio('./assets/timer.wav')
+      audioTimer: new Audio('./assets/timer.wav'),
+      typo: false,
     }
   },
   watch: {
@@ -94,16 +96,19 @@ app.component('lorem-ipsum', {
     },
     submitForm() {
       if (this.input != this.rng_text) {
-        alert('You have typo(s) in your submission.\nPlease revise you text and resubmit.')
+        //alert('You have typo(s) in your submission.\nPlease revise you text and resubmit.')
+        this.typo = true
         return
       }
 
+      this.typo = false
       this.rngText(this.input)
       this.input = ""
       this.score++
       if (this.score == 5) {
         clearInterval(this.rec)
         clearInterval(this.timer)
+        this.audioTimer.pause()
         this.$emit('sensors-data-submitted', this.sensorsData)
       }
     },
@@ -124,6 +129,7 @@ app.component('lorem-ipsum', {
       if (this.sec == 0){
         clearInterval(this.rec)
         clearInterval(this.timer)
+        this.audioTimer.pause()
         this.internalStateNum++
         this.$emit('sensors-data-submitted', this.sensorsData)
       }
@@ -157,11 +163,15 @@ app.component('lorem-ipsum', {
     this.rngText(this.input)
     this.score = 0
     this.sec = 60
-    this.audioTimer.loop = true
+    this.input = ""
+    this.audioTimer.loop = false
     this.audioTimer.load()
+    this.typo = false
   },
   beforeUnmount(){
     //might be redundant, but I don't care. Better worry than sorry.
+    this.audioTimer.loop = false
+    this.audioTimer.pause()
     clearInterval(this.rec)
     clearInterval(this.timer)
   }
