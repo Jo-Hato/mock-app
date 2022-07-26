@@ -52,6 +52,6 @@ app.component('end-screen', {
         }
     },
     beforeMount(){
-        this.created()
+        //this.created()
     }
 })
