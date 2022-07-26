@@ -95,7 +95,7 @@ app.component('scwt', {
   beforeMount(){
     this.rngWord()
     this.score = 0
-    this.sec = 9999
+    this.sec = 60
     this.picked = null
   }
 })
