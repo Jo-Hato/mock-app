@@ -13,9 +13,13 @@
       <header>MockApp Develop Branch</header>
 
       <div v-if="eventNum === 0">
-        <initial-setup :accels="accels" :gyros="gyros" :debug-mode="debugMode"></initial-setup>
-        <button style="font-size: 2rem; margin: 3rem 0 0 1rem;" id="start_demo" href="#" role="button">Allow Sensor Use</button><br>
-        <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button><br><br>
+        <privacy-policy></privacy-policy><br>
+        <initial-setup :accels="accels" :gyros="gyros" :debug-mode="debugMode"></initial-setup><br>
+        <p>Once you turned off the auto corrections, please press "Allow Sensor Use" button, and press "Next" to proceed.<br><br>By pressing the button below, you agree to the privacy policy stated above.</p>
+        <div class="box">
+          <button class="button" style="font-size: 2rem; margin: 1rem 0 0 33%;" id="start_demo" href="#" role="button">Allow Sensor Use</button><br>
+          <button class="button" style="font-size: 2rem; margin: 1rem 0 0 45%;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button>
+        </div><br><br><br><br>
         <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem; color: fuchsia;" v-if="!debugMode" @click="activateDebugMode">Activate Debug Mode</button>
         <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem; color: fuchsia;" v-if="debugMode" @click="eventNum++">Force Next</button>
       </div>
@@ -54,6 +58,7 @@
     <script src="./main.js"></script>
 
     <!-- Import Components -->
+    <script src="./components/PrivacyPolicy.js"></script>
     <script src="./components/InitialSetup.js"></script>
     <script src="./components/InitialForm.js"></script>
     <script src="./components/GroundSurvey.js"></script>
@@ -68,7 +73,7 @@
       const mountedApp = app.mount('#app')
 
       //Motion Sensor
-      let PRECISION = 1
+      let PRECISION = 10
       let demo_button = document.getElementById("start_demo");
       demo_button.onclick = function(e) {
         e.preventDefault();   

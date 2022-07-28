@@ -19,10 +19,10 @@ app.component('initial-setup', {
       <h1>Initial Setup</h1>
       <div style="margin: 2rem;">
         <div>
+          <p>During this experiment, please turn off all of your phone's typing correction features (e.g. auto corrections, auto Caps, spelling check). After the experiment is finished, you may turn it back on. It is recommended to take a screenshot of your current settings for a reference, when you turn it back on.</p>
           <ul>
-            <li>Alpha: {{ (accels.x + accels.y + accels.z) != 0 }}</li>
-            <li>Golf: {{ (gyros.x + gyros.y + gyros.z) != 0 }}</li>
-          </ul>
+            <li>For iOS: Settings > General > Keyboard > Turn off all corrections features</li>
+            <li>For Android: Settings > Additional settings > Keyboard & input method > Choose your current keyboard > Text correction > Turn off all correction features</li>
         </div>
 
         <div v-if="debugMode" style="color: fuchsia;">

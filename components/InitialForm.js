@@ -6,7 +6,7 @@ app.component('initial-form', {
       <p>Please enter you basic information.</p>
 
       <div class="box">
-        <label for="name">Name (or Nickname):</label><br>
+        <label for="name">Nickname/ID (Optional):</label><br>
         <input id="name" v-model="name"><br>
 
         <label for="age">Age:</label><br>
@@ -16,10 +16,11 @@ app.component('initial-form', {
         <select id="gender" v-model="gender" @click="touched()">
           <option>Male</option>
           <option>Female</option>
+          <option>Other</option>
         </select><br> 
     
-        <button class="button" @click="submitForm()" :disabled="this.name === '' || this.age === null || this.gender === null">Submit</button>
-        <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia">Force Next</button>
+        <button class="button" @click="submitForm()" :disabled="this.age === null || this.gender === null">Submit</button>
+        <button class="button" v-if="debugMode" @click="skip()" style="color: fuchsia;">Force Next</button>
       </div>
     </div>`,
     props: {
