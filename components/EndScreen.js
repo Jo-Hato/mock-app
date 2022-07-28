@@ -3,7 +3,7 @@ app.component('end-screen', {
     /*html*/
     `<div>
         <h1>The End of Data Collection</h1>
-        <p>Thank you for your participation! :D</p><br>
+        <br><p>Thank you for your participation! :D</p><br>
 
         <p>{{ message }}</p>
         <button class="button" @click="sendMessage(runData)">Send Data</button>
