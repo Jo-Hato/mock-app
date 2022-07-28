@@ -10,7 +10,7 @@ app.component('end-screen', {
         <br><p v-if="internalStateNum == 1">Thank you for your participation! :D<br>You may revert the keyboard settings, and close this app.</p>
 
         <p>{{ message }}</p>
-        <button class="button" v-if="internalStateNum == 0" @click="sendMessage(runData)">Send Data</button>
+        <button class="button" v-if="internalStateNum == 0" @click="sendMessage()">Send Data</button>
         <br><br><br><br><br><br><br><br><br><br><br><br>
         <div v-if="internalStateNum == 0">
             <p>Collected Data:</p>
@@ -34,6 +34,7 @@ app.component('end-screen', {
         created() {
             console.log("Starting webSocket to WebSocket Server")
             this.webSocket = new WebSocket("wss://gmc.cps.akita-pu.ac.jp:8080")
+            //this.webSocket = new WebSocket("ws://172.24.55.112:8080")
         
             this.webSocket.onmessage = function(event) {
                 console.log(event);
@@ -54,10 +55,11 @@ app.component('end-screen', {
                 this.message += "Server Disconnected..."
             }
         },
-        sendMessage(message) {
-            this.internalStateNum++
+        sendMessage() {
+            let message = JSON.stringify(this.runData)
             console.log(this.webSocket);
             this.webSocket.send(message);
+            this.internalStateNum++
         }
     },
     beforeMount(){
