@@ -7,14 +7,14 @@ app.component('end-screen', {
         <p v-if="internalStateNum == 0">Please press the button below to send the data.
             You may review the data collected, which is displayed at the bottom of this screen, before sending.
         </p>
-        <br><p v-if="internalStateNum == 1">Thank you for your participation! :)<br>You may revert the keyboard settings, and close this app.</p>
+        <br><p v-if="internalStateNum == 1">Thank you for your participation! :D<br>You may revert the keyboard settings, and close this app.</p>
 
         <p>{{ message }}</p>
         <button class="button" v-if="internalStateNum == 0" @click="sendMessage(runData)">Send Data</button>
         <br><br><br><br><br><br><br><br><br><br><br><br>
         <div v-if="internalStateNum == 0">
-        <p>Collected Data:</p>
-        <p>{{ runData }}</p>
+            <p>Collected Data:</p>
+            <p>{{ runData }}</p>
         </div>
     </div>`,
     props: {
@@ -52,7 +52,7 @@ app.component('end-screen', {
                 this.message += event
                 console.log("Server Disconnected...")
                 this.message += "Server Disconnected..."
-            };
+            }
         },
         sendMessage(message) {
             this.internalStateNum++
