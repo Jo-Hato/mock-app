@@ -3,12 +3,19 @@ app.component('end-screen', {
     /*html*/
     `<div>
         <h1>The End of Data Collection</h1>
-        <br><p>Thank you for your participation! :D</p><br>
+        <br>
+        <p v-if="internalStateNum == 0">Please press the button below to send the data.
+            You may review the data collected, which is displayed at the bottom of this screen, before sending.
+        </p>
+        <br><p v-if="internalStateNum == 1">Thank you for your participation! :)<br>You may revert the keyboard settings, and close this app.</p>
 
         <p>{{ message }}</p>
-        <button class="button" @click="sendMessage(runData)">Send Data</button>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <button class="button" v-if="internalStateNum == 0" @click="sendMessage(runData)">Send Data</button>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <div v-if="internalStateNum == 0">
+        <p>Collected Data:</p>
         <p>{{ runData }}</p>
+        </div>
     </div>`,
     props: {
         runData: {
@@ -19,7 +26,8 @@ app.component('end-screen', {
     data() {
       return {
         webSocket: null,
-        message: ""
+        message: "",
+        internalStateNum: 0
       }
     },
     methods: {
@@ -47,6 +55,7 @@ app.component('end-screen', {
             };
         },
         sendMessage(message) {
+            this.internalStateNum++
             console.log(this.webSocket);
             this.webSocket.send(message);
         }
