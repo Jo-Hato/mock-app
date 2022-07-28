@@ -13,6 +13,6 @@ app.component('privacy-policy', {
             </ul>
         </div>
         <p>No personal-identifiable data will be collected, and the text inputs will not be recorded as keystrokes but only as total number of touches/deletions.</p>
-        <p>The data collected will be used for an upcoming research, which may be presented publically (e.g. a conference). Participant may send an E-mail to <i>jo.shimazaki@cps.akita-pu.ac.jp</i> in order to request access to this research, and will be notified when this research is done.</p>
+        <p>The data collected will be used for an upcoming research, which may be presented publically (e.g. a conference), though the data collected will be anonymized. Participant may send an E-mail to <i>jo.shimazaki@cps.akita-pu.ac.jp</i> in order to request access to this research, and will be notified when this research is done.</p>
     </div>`
 })
