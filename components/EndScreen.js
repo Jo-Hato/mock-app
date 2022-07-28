@@ -4,6 +4,7 @@ app.component('end-screen', {
     `<div>
         <h1>The End of Data Collection</h1>
         <br>
+        <p>{{ message }}</p>
         <p v-if="internalStateNum == 0">Please press the button below to send the data.
             You may review the data collected, which is displayed at the bottom of this screen, before sending.
         </p>
@@ -37,12 +38,12 @@ app.component('end-screen', {
             //this.webSocket = new WebSocket("ws://172.24.55.112:8080")
         
             this.webSocket.onmessage = function(event) {
-                console.log(event);
+                console.log(event)
                 this.message += event
             }
         
             this.webSocket.onopen = function(event) {
-                console.log(event);
+                console.log(event)
                 this.message += event
                 console.log("Successfully connected to the gmc websocket server...")
                 this.message += "Successfully connected to the gmc websocket server..."
@@ -57,8 +58,8 @@ app.component('end-screen', {
         },
         sendMessage() {
             let message = JSON.stringify(this.runData)
-            console.log(this.webSocket);
-            this.webSocket.send(message);
+            console.log(this.webSocket)
+            this.webSocket.send(message)
             this.internalStateNum++
         }
     },
