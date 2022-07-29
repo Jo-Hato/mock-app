@@ -53,7 +53,7 @@ app.component('lorem-ipsum', {
       texts: [
         "lorem ipsum dolor sit amet",
         "consectetur adipiscing elit",
-        "donec eget risus in nisi cursus placerat",
+        "donec eget risus in nisi cursus",
         "pellentesque in turpis scelerisque",
         "iaculis velit in auctor nulla"],
       rng_text: "",
