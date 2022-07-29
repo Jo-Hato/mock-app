@@ -13,8 +13,8 @@ app.component('privacy-policy', {
                 <li>Start/End time of this experiment</li>
             </ul>
         </div>
-        <p>No other data will be collected, and the text inputs will not be recorded as keystrokes but only as total number of touches/deletions.</p>
-        <p>The data collected will be used for an upcoming research, which may be presented publically (e.g. research publication, conference), though the data collected will be anonymized. 
-        Participant may send an E-mail to <i>jo.shimazaki@cps.akita-pu.ac.jp</i> in order to request access to this research, and will be notified when this research is completed.</p>
+        <p>No other data will be collected, and the text inputs will not be recorded as keystrokes but only as total number of touches/deletions.</p><br>
+        <p>The data collected will be used for an upcoming research, which may be presented publically (e.g. research publication, conference), though the data collected will be anonymized.</p><br> 
+        <p>Participant may send an E-mail to <i>jo.shimazaki@cps.akita-pu.ac.jp</i> in order to request access to this research, and will be notified when this research is completed.</p>
     </div>`
 })

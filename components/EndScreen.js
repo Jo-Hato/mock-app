@@ -4,9 +4,12 @@ app.component('end-screen', {
     `<div>
         <h1>The End of Data Collection</h1>
         <br>
-        <p v-if="internalStateNum == 0">Please press the button below to send the data.
-            You may review the data collected, which is displayed at the bottom of this screen, before sending.
-        </p>
+        <div v-if="internalStateNum == 0">
+            <p>You may review the data collected (displayed at the very bottom of this screen), and the purpose of this research, before sending it over a SSL-secured connection.</p><br>
+            <p>The purpose of this research is to see if a neural network can detect smartphone user's stress, only from device's motion sensor info, and total input/deletion number. Developing a method to detect stress on mobile device, in a non-invasive manner, may lead to further research such as improving user experience, reducing stress in daily life, and have many other useful applications.</p><br>
+            <p>If you disagree, you may cancel sending data by closing this app.</p><br>
+            <p><u style="color: pink;">If you are satisfied with the privacy policy, collected data, and the purpose of this study, please press the button below to send the data.</u></p><br>
+        </div>
         <br><p v-if="internalStateNum == 1">Thank you for your participation! :D<br>You may revert the keyboard settings, and close this app.</p>
 
         <button class="button" v-if="internalStateNum == 0" :disabled="!tried" @click="sendMessage()">Send Data</button>
