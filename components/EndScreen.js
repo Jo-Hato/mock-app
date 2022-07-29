@@ -64,7 +64,7 @@ app.component('end-screen', {
                 this.internalStateNum++
                 this.isError = false
             } else {
-                alert("ERROR: Could not connect to the server.\nPlease press 'Connect Server' button.\n\nIf the issue consists, please notify the instructor.")
+                alert("ERROR: Could not connect to the server.\nPlease press 'Connect Server' button.\n\nIf the issue consists, please notify me via jo.shimazaki@cps.akita-pu.ac.jp")
                 this.isError = true
                 this.tried = false
             }
