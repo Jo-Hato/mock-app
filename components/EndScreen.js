@@ -10,7 +10,7 @@ app.component('end-screen', {
         <br><p v-if="internalStateNum == 1">Thank you for your participation! :D<br>You may revert the keyboard settings, and close this app.</p>
 
         <button class="button" v-if="internalStateNum == 0" :disabled="!tried" @click="sendMessage()">Send Data</button>
-        <button class="button"v-if="internalStateNum != 1" v-if="isError" @click="created()">Connect Server</button>
+        <button class="button" v-if="isError" @click="created()">Connect Server</button>
         <br><br><br><br><br><br><br><br><br><br><br><br>
         <div v-if="internalStateNum == 0">
             <p>Collected Data:</p>
@@ -59,6 +59,7 @@ app.component('end-screen', {
                 console.log(this.webSocket)
                 this.webSocket.send(message)
                 this.internalStateNum++
+                this.isError = false
             } else {
                 alert("ERROR: Could not connect to the server.\nPlease press 'Connect Server' button.\n\nIf the issue consists, please notify the instructor.")
                 this.isError = true
