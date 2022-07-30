@@ -12,7 +12,7 @@ app.component('lorem-ipsum', {
       <label style="font-size: 2em; color: white;" for="input"><b>{{ (internalStateNum == 0) ? "ここにテキストが表示されます。準備ができたら「Start」を押してください。" : rng_text}}</b></label>
       <p v-show="typo" style="color: red;">誤字があります! 答えを訂正してください!</p>
       <br><br><label style="font-size: 2rem;">ここに入力してください:</label>
-      <input :disabled="internalStateNum == 0" id="input" v-model="input"><br>
+      <input :disabled="internalStateNum == 0" id="input" v-model="input" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"><br>
 
       <button v-if="internalStateNum == 0" class="button" @click="startLorem()">Start</button>
       <button :disabled="internalStateNum == 0 || input == ''" class="button" @click="submitForm()">Submit</button>
