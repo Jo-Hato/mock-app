@@ -22,7 +22,7 @@
           <button class="button" style="font-size: 2rem; margin: 1rem 0 0 33%;" id="start_demo" href="#" role="button">Allow Sensor Use</button><br>
           <button class="button" style="font-size: 2rem; margin: 1rem 0 0 45%;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button>
         </div><br><br><br><br>
-        <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem; color: fuchsia;" v-if="!debugMode" @click="activateDebugMode">Activate Debug Mode</button>
+        <!--<button class="button" style="font-size: 1rem; margin: 1rem 0 0 1rem;" v-if="!debugMode" @click="activateDebugMode">Activate Debug Mode</button>-->
         <button class="button" style="font-size: 2rem; margin: 1rem 0 0 1rem; color: fuchsia;" v-if="debugMode" @click="eventNum++">Force Next</button>
       </div>
       <initial-form v-else-if="eventNum === 1" @initial-form-submitted="addInitialForm" @touch="updateTouch" @del-key="updateDel" :debug-mode="debugMode"></initial-form>
