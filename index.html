@@ -17,7 +17,7 @@
         <br><p>この実験を始める前に、 <u style="color: pink;">できれば椅子に座り、携帯電話は縦向きで手にとってご使用ください。</u></p><br>
         <privacy-policy></privacy-policy><br>
         <initial-setup :accels="accels" :gyros="gyros" :debug-mode="debugMode"></initial-setup><br>
-        <p>Once you turned off all of the auto corrections, please <u style="color: pink">press "Allow Sensor Use" button, and press "Next" to proceed</u>.<br><br>By pressing the button below, you agree to the privacy policy stated above.</p>
+        <p>自動補正を全てOFFにした後、 <u style="color: pink">"Allow Sensor Use"ボタンを押し、"Next"ボタンを押してください</u><br><br>また、以下のボタンを押すと、上記のプライバシーポリシーに同意して頂いた事とします。</p>
         <div class="box">
           <button class="button" style="font-size: 2rem; margin: 1rem 0 0 33%;" id="start_demo" href="#" role="button">Allow Sensor Use</button><br>
           <button class="button" style="font-size: 2rem; margin: 1rem 0 0 45%;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button>
