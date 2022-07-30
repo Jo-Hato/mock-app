@@ -13,7 +13,8 @@ app.component('scwt', {
 
     <div class="box">
       <p v-if="internalStateNum == 0 && phase == 0" style="color: white;"><u>フォントの色</u>を選んでください。</p>
-      <p v-if="internalStateNum == 1 || internalStateNum == 3" style="color: white;"><u>書き言葉の色</u>を選んでください。</p><br>
+      <p v-if="internalStateNum == 1" style="color: white;"><u>フォントの色</u>を選んでください。</p><br>
+      <p v-if="internalStateNum == 3" style="color: white;"><u>書き言葉の色</u>を選んでください。</p><br>
       <h2 style="text-shadow: 0 0 3px #FFFFFF, 0 0 5px #000000;" :class="word.class[word.color]">
         {{ word.written }}
       </h2>
