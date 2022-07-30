@@ -6,7 +6,7 @@ app.component('initial-form', {
       <p>基本情報を入力してください。</p>
 
       <div class="box">
-        <label for="name">ニックネーム/ID (任意):</label><br>
+        <label for="name">ニックネーム/ID (半角英数字) (任意):</label><br>
         <input id="name" v-model="name"><br>
 
         <label for="age">年齢:</label><br>
