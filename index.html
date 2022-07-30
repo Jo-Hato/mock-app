@@ -19,7 +19,7 @@
           <br>更に、移動しながら(歩きながら、車や電車に乗りながら等)のご参加はおやめください。できれば椅子に座り、携帯電話は縦向きで、手にとってご使用ください。</u></p><br>
         <privacy-policy></privacy-policy><br>
         <initial-setup :accels="accels" :gyros="gyros" :debug-mode="debugMode"></initial-setup><br>
-        <p>自動補正を全てOFFにした後、 <u style="color: pink">"Allow Sensor Use"ボタンを押し、"Next"ボタンを押してください</u><br><br>また、以下のボタンを押すと、上記のプライバシーポリシーに同意して頂いた事とします。</p>
+        <p><u style="color: pink">"Allow Sensor Use"ボタンを押し、"Next"ボタンを押してください</u><br><br>また、以下のボタンを押すと、上記のプライバシーポリシーに同意して頂いた事とします。</p>
         <div class="box">
           <button class="button" style="font-size: 2rem; margin: 1rem 0 0 33%;" id="start_demo" href="#" role="button">Allow Sensor Use</button><br>
           <button class="button" style="font-size: 2rem; margin: 1rem 0 0 45%;" :disabled="(accels.x+accels.y+accels.z+gyros.x+gyros.y+gyros.z) == 0" @click="eventNum++">Next</button>
