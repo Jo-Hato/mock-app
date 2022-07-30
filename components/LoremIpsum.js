@@ -9,7 +9,7 @@ app.component('lorem-ipsum', {
     <p>得点: {{ score }}</p>
 
     <div class="box">
-      <label style="font-size: 2em; color: white;" for="input"><b>{{ (internalStateNum == 0) ? "ここにテキストが表示されます。準備ができたら「スタート」を押してください。" : rng_text}}</b></label>
+      <label style="font-size: 2em; color: white;" for="input"><b>{{ (internalStateNum == 0) ? "ここにテキストが表示されます。準備ができたら「Start」を押してください。" : rng_text}}</b></label>
       <p v-show="typo" style="color: red;">誤字があります! 答えを訂正してください!</p>
       <input :disabled="internalStateNum == 0" id="input" v-model="input"><br>
 
