@@ -17,6 +17,7 @@ app.component('scwt', {
       <h2 style="text-shadow: 0 0 3px #FFFFFF, 0 0 5px #000000;" :class="word.class[word.color]">
         {{ word.written }}
       </h2>
+      <br><label>Press the button below:</label>
       <div>
         <input :disabled="internalStateNum == 0 || internalStateNum == 2" v-model="picked" @click="onSubmit(color)" v-for="(color, index) in colors" :class="color" type="radio" :id="index" :value="color"/>
       </div>
