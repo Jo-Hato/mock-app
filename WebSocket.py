@@ -28,7 +28,7 @@ async def accept(websocket, path):
     s = str(json.loads(data))
     print("Received data: ", s)
     fname = str(datetime.now())
-    fname = fname.replace(" ", "-")
+    fname = fname.replace(" ", "-").replace(":", "-")
 
     with open(dir_name+fname+".json", "w") as file:
       file.write(s)
