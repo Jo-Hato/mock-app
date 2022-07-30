@@ -11,7 +11,7 @@ app.component('lorem-ipsum', {
     <div class="box">
       <label style="font-size: 2em; color: white;" for="input"><b>{{ (internalStateNum == 0) ? "ここにテキストが表示されます。準備ができたら「Start」を押してください。" : rng_text}}</b></label>
       <p v-show="typo" style="color: red;">誤字があります! 答えを訂正してください!</p>
-      <p>ここに上記のテキストを入力してください:</p>
+      <br><br><label style="font-size: 2rem;">ここに入力してください:</label>
       <input :disabled="internalStateNum == 0" id="input" v-model="input"><br>
 
       <button v-if="internalStateNum == 0" class="button" @click="startLorem()">Start</button>

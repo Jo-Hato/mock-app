@@ -14,9 +14,9 @@ app.component('initial-form', {
 
         <label for="gender">性別:</label><br>
         <select id="gender" v-model="gender" @click="touched()">
-          <option>男性</option>
-          <option>女性</option>
-          <option>その他</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
         </select><br> 
     
         <button class="button" @click="submitForm()" :disabled="this.age === null || this.gender === null">Submit</button>
