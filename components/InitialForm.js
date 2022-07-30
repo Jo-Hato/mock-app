@@ -3,20 +3,20 @@ app.component('initial-form', {
     /*html*/
     `<div>
       <h1>Basic Information</h1>
-      <p>Please enter you basic information.</p>
+      <p>基本情報を入力してください。</p>
 
       <div class="box">
-        <label for="name">Nickname/ID (Optional):</label><br>
+        <label for="name">ニックネーム/ID (任意):</label><br>
         <input id="name" v-model="name"><br>
 
-        <label for="age">Age:</label><br>
+        <label for="age">年齢:</label><br>
         <input id="age" type="number" step="1" pattern="\d" v-model.number="age"><br>
 
-        <label for="gender">Gender:</label><br>
+        <label for="gender">性別:</label><br>
         <select id="gender" v-model="gender" @click="touched()">
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
+          <option>男性</option>
+          <option>女性</option>
+          <option>その他</option>
         </select><br> 
     
         <button class="button" @click="submitForm()" :disabled="this.age === null || this.gender === null">Submit</button>

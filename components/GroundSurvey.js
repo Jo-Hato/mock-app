@@ -3,37 +3,37 @@ app.component('ground-survey', {
   /*html*/
   `<div>
     <h1>Emotion Survey</h1>
-    <p>How do you feel?</p>
-    <p>1: low, 5: high</p>
+    <p>今、どの様な気分ですか?</p>
+    <p>1: 低い, 5: 高い</p>
 
     <div class="box">
       <!-- Dyamn, should've used Vue's loop... -->
-      <label for="tired">Tired:</label>
+      <label for="tired">疲れている:</label>
       <select @click="touched" id="tired" v-model.number="tired">
         <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
       </select>
       <p style="margin: 0; padding: 0; height: 0.5em;">&nbsp</p>
-      <label for="happy">Happy:</label>
+      <label for="happy">嬉しい:</label>
       <select @click="touched" id="happy" v-model.number="happy">
         <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
       </select>
       <p style="margin: 0; padding: 0; height: 0.5em;">&nbsp</p>
-      <label for="stress">Stress:</label>
+      <label for="stress">ストレスを感じている:</label>
       <select @click="touched" id="stress" v-model.number="stress">
         <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
       </select>
       <p style="margin: 0; padding: 0; height: 0.5em;">&nbsp</p>
-      <label for="energy">Energy:</label>
+      <label for="energy">元気:</label>
       <select @click="touched" id="energy" v-model.number="energy">
         <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
       </select>
       <p style="margin: 0; padding: 0; height: 0.5em;">&nbsp</p>
-      <label for="angry">Angry:</label>
+      <label for="angry">怒っている:</label>
       <select @click="touched" id="angry" v-model.number="angry">
         <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
       </select>
       <p style="margin: 0; padding: 0; height: 0.5em;">&nbsp</p>
-      <label for="interested">Interested:</label>
+      <label for="interested">興味がある:</label>
       <select @click="touched" id="interested" v-model.number="interested">
         <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
       </select>

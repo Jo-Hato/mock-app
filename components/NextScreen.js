@@ -2,7 +2,7 @@ app.component('next-screen', {
     template:
     /*html*/
     `<div>
-      <h1> {{ xLeft }}/4 Excercise Finished!</h1>
+      <h1> {{ xLeft }}/4のアクテビティが完了しました。</h1>
       <button class="button" v-if="true" @click="skip()">Next</button>
     </div>`,
     props: {

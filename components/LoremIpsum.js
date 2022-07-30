@@ -3,14 +3,14 @@ app.component('lorem-ipsum', {
   /*html*/
   `<div>
     <h1>Texting Excercise</h1>
-    <p>Please write the text below.</p>
-    <h2 v-show="(eventNum != 3) && internalStateNum == 1" style="color: red;">{{ sec }} second(s) left</h2>
+    <p>以下に表示される文章をお書きください。</p>
+    <h2 v-show="(eventNum != 3) && internalStateNum == 1" style="color: red;">残り{{ sec }}秒</h2>
     <p v-show="debugMode" style="color: fuchsia;">DEBUG: {{ sec }} second(s) left</p>
-    <p>Current Score: {{ score }}</p>
+    <p>得点: {{ score }}</p>
 
     <div class="box">
-      <label style="font-size: 2em; color: white;" for="input"><b>{{ (internalStateNum == 0) ? "The text will be displayed here. Press 'start' when ready." : rng_text}}</b></label>
-      <p v-show="typo" style="color: red;">You have typo(s)! Please correct your answer!</p>
+      <label style="font-size: 2em; color: white;" for="input"><b>{{ (internalStateNum == 0) ? "ここにテキストが表示されます。準備ができたら「スタート」を押してください。" : rng_text}}</b></label>
+      <p v-show="typo" style="color: red;">誤字があります! 答えを訂正してください!</p>
       <input :disabled="internalStateNum == 0" id="input" v-model="input"><br>
 
       <button v-if="internalStateNum == 0" class="button" @click="startLorem()">Start</button>

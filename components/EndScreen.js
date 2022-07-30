@@ -5,15 +5,15 @@ app.component('end-screen', {
         <h1>The End of Data Collection</h1>
         <br>
         <div v-if="internalStateNum == 0">
-            <p>You may review the data collected (displayed at the very bottom of this screen), and the purpose of this research, before sending it over a SSL-secured connection.</p><br>
-            <p>The purpose of this research is to see if a neural network can detect smartphone user's stress, only from device's motion sensor info, and total input/deletion number. Developing a method to detect stress on mobile device, in a non-invasive manner, may lead to further research such as improving user experience, reducing stress in daily life, and have many other useful applications.</p><br>
-            <p>If you disagree, you may cancel sending data by closing this app.</p><br>
-            <p><u style="color: pink;">If you are satisfied with the privacy policy, collected data, and the purpose of this study, please press the button below to send the data.</u></p><br>
+            <p>収集した実験データ（この画面の一番下に表示されます）と本研究の目的を確認した上で、送信してください。</p><br>
+            <p>本研究の目的は、端末のモーションセンサー情報と総入力/総消去数のみから、スマートフォンユーザーのストレスをニューラルネットワークで検出できるかどうかを確認することです。モバイル端末のストレスを手軽に検出する手法を開発することで、ユーザー体験の向上や日常生活におけるストレスの軽減など、様々な研究への応用が期待されます。</p><br>
+            <p>ご同意いただけない場合は、本アプリを終了することで、データの送信を中止することができます。</p><br>
+            <p><u style="color: pink;">プライバシーポリシー、収集データ、そして本調査の目的にご賛同いただける場合は、以下のボタンを押してデータを送信してください。</u></p><br>
         </div>
-        <br><p v-if="internalStateNum == 1">Thank you for your participation! :D<br>You may revert the keyboard settings, and close this app.</p>
+        <br><p v-if="internalStateNum == 1">ご参加ありがとうございました。<br>キーボードの設定を元に戻して、このアプリを終了してください。</p>
 
-        <button class="button" v-if="internalStateNum == 0" :disabled="!tried" @click="sendMessage()">Send Data</button>
-        <button class="button" v-if="isError" @click="created()">Connect Server</button>
+        <button class="button" v-if="internalStateNum == 0" :disabled="!tried" @click="sendMessage()">データを送信する</button>
+        <button class="button" v-if="isError" @click="created()">サーバーに接続する</button>
         <br><br><br><br><br><br><br><br><br><br><br><br>
         <div v-if="internalStateNum == 0">
             <p>Collected Data:</p>
@@ -64,7 +64,7 @@ app.component('end-screen', {
                 this.internalStateNum++
                 this.isError = false
             } else {
-                alert("ERROR: Could not connect to the server.\nPlease press 'Connect Server' button.\n\nIf the issue consists, please notify me via jo.shimazaki@cps.akita-pu.ac.jp")
+                alert("エラー: サーバーに接続できませんでした。\n「サーバーに接続する」のボタンを押して再度、送信してください。\n\nもし数回やっても失敗する場合、大変お手数ですが「jo.shimazaki@cps.akita-pu.ac.jp」にメールにてお知らせください。")
                 this.isError = true
                 this.tried = false
             }

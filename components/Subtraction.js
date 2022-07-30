@@ -3,15 +3,15 @@ app.component('subtraction', {
   /*html*/
   `<div>
     <h1>Math Excercise</h1>
-    <p>Please enter the answer below.</p>
-    <h2 style="color: red;" v-show="internalStateNum == 1">{{ sec }} second(s) left</h2>
-    <p>Current Score: {{ score }}</p>
+    <p>以下の暗算問題を解いてください</p>
+    <h2 style="color: red;" v-show="internalStateNum == 1">残り{{ sec }}秒</h2>
+    <p>得点: {{ score }}</p>
 
     <div class="box">
-      <h2 v-if="internalStateNum == 0" style="color: white;">The equation will be displayed here. Press 'start' when ready.</h2>
+      <h2 v-if="internalStateNum == 0" style="color: white;">ここに数式が表示されます。準備ができたら「Start」を押してください。</h2>
       <h2 v-else style="color: white;">{{ num0 }} - {{ num1 }} = ?</h2><br>
       
-      <label for="input">Input your answer here:</label>
+      <label for="input">ここに答えを入力してください。</label>
       <input :disabled="internalStateNum == 0" id="input" v-model="input" type="number" pattern="\d"><br>
 
       <button v-if="internalStateNum == 0" class="button" @click="startCalc()">Start</button>

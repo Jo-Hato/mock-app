@@ -3,17 +3,17 @@ app.component('scwt', {
   /*html*/
   `<div>
     <h1>SCWT Excercise</h1>
-    <p v-if="internalStateNum == 0">In this excercise, you have to press the colored boxes maching the displayed messages which changes every 2 seconds.<br>
-      In the first phase, you have to choose the <u>font color</u>.<br><br>
-      <u>Please score more than 25 points</u><br>
-      Press 'Start' when ready.</p><br>
-    <p v-if="internalStateNum == 2">In this phase, you have to choose the <u>written word color</u>.<br></p>
-    <h2 style="color: red;" v-if="internalStateNum == 1 || internalStateNum == 3">{{ sec }} second(s) left</h2>
-    <p>Current Score: {{ score }}/25</p>
+    <p v-if="internalStateNum == 0">2秒ごとに変わるメッセージに対応する色のついたボタンを押してください。<br>
+    最初のフェーズでは、<u>フォントの色</u>を選択する必要があります。<br><br>
+      <u>25点以上の得点を目指してください。</u><br>
+      準備ができたら「スタート」を押してください。</p><br>
+    <p v-if="internalStateNum == 2">このフェーズでは、<u>書き言葉の色</u>を選択する必要があります。<br></p>
+    <h2 style="color: red;" v-if="internalStateNum == 1 || internalStateNum == 3">残り{{ sec }}秒</h2>
+    <p>得点: {{ score }}/25</p>
 
     <div class="box">
-      <p v-if="internalStateNum == 0 && phase == 0" style="color: white;">Please choose the <u>font color</u>.</p>
-      <p v-if="internalStateNum == 1 || internalStateNum == 3" style="color: white;">Please choose the <u>{{ writtenOrFont[rng] }} color</u>.</p><br>
+      <p v-if="internalStateNum == 0 && phase == 0" style="color: white;"><u>フォントの色</u>を選んでください。</p>
+      <p v-if="internalStateNum == 1 || internalStateNum == 3" style="color: white;"><u>書き言葉の色</u>を選んでください。</p><br>
       <h2 style="text-shadow: 0 0 3px #FFFFFF, 0 0 5px #000000;" :class="word.class[word.color]">
         {{ word.written }}
       </h2>
