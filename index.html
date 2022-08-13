@@ -40,7 +40,7 @@
       <ground-survey v-else-if="eventNum === 11" @ground-truth-submitted="addGroundTruth" @touch="updateTouch" :debug-mode="debugMode"></ground-survey>
       <end-screen v-else-if="eventNum === 12" :run-data="runData"></end-screen>
 
-
+      <button onclick="mountedApp.activateDebugMode()">Debug mode</button>
       <div v-show="debugMode" style="color: fuchsia;">        
         <ul>Debugger:
           <li>eventNum = {{ eventNum }}</li>

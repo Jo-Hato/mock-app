@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            debugMode: true,
+            debugMode: false,
             eventNum: 0,
             FREQ: 20,
 
